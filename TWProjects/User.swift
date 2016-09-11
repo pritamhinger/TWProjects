@@ -55,11 +55,32 @@ struct User {
         projectsEnabled = userDictionary[TWProjectsClient.AuthenticateResponseKeys.ProjectsEnabled] as? Bool
         documentEditorEnabled = userDictionary[TWProjectsClient.AuthenticateResponseKeys.DocumentEditorEnabled] as? Bool
         sslEnabled = userDictionary[TWProjectsClient.AuthenticateResponseKeys.SSLEnabled] as? Bool
-        canManagePeople = userDictionary[TWProjectsClient.AuthenticateResponseKeys.CanManagePeople] as? Bool
+        if let canManagePeople = userDictionary[TWProjectsClient.AuthenticateResponseKeys.CanManagePeople] as? String{
+            if canManagePeople == "0"{
+                self.canManagePeople = false
+            }
+            else{
+                self.canManagePeople = true
+            }
+        }
+        else{
+            canManagePeople = false
+        }
         companyName = userDictionary[TWProjectsClient.AuthenticateResponseKeys.CompanyName] as? String
         userIsAdmin = userDictionary[TWProjectsClient.AuthenticateResponseKeys.UserIsAdmin] as? Bool
         name = userDictionary[TWProjectsClient.AuthenticateResponseKeys.Name] as? String
-        canAddProjects = userDictionary[TWProjectsClient.AuthenticateResponseKeys.CanAddProjects] as? Bool
+        //canAddProjects = Bool((userDictionary[TWProjectsClient.AuthenticateResponseKeys.CanAddProjects] as? String)!)
+        if let canAddProjects = userDictionary[TWProjectsClient.AuthenticateResponseKeys.CanAddProjects] as? String{
+          if canAddProjects == "0"{
+            self.canAddProjects = false
+          }
+          else{
+            self.canAddProjects = true
+            }
+        }
+        else{
+            self.canAddProjects = false
+        }
         requireHTTPs = userDictionary[TWProjectsClient.AuthenticateResponseKeys.RequireHTTPS] as? Bool
         code = userDictionary[TWProjectsClient.AuthenticateResponseKeys.Code] as? String
         dateFormat = userDictionary[TWProjectsClient.AuthenticateResponseKeys.DateFormat] as? String
@@ -73,6 +94,16 @@ struct User {
         dateSeparator = userDictionary[TWProjectsClient.AuthenticateResponseKeys.DateSeperator] as? String
         firstName = userDictionary[TWProjectsClient.AuthenticateResponseKeys.FirstName] as? String
         tagsLockedToAdmins = userDictionary[TWProjectsClient.AuthenticateResponseKeys.TagsLockedToAdmins] as? Bool
-        userIsMemberOfOwnerCompany = userDictionary[TWProjectsClient.AuthenticateResponseKeys.UserIsMemberOfOwnerCompany] as? Bool
+        if let userIsMemberOfOwnerCompany = userDictionary[TWProjectsClient.AuthenticateResponseKeys.UserIsMemberOfOwnerCompany] as? String{
+            if userIsMemberOfOwnerCompany == "YES"{
+                self.userIsMemberOfOwnerCompany = true
+            }
+            else{
+                self.userIsMemberOfOwnerCompany = false
+            }
+        }
+        else{
+            self.userIsMemberOfOwnerCompany = false
+        }
     }
 }
