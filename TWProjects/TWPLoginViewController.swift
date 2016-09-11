@@ -50,10 +50,13 @@ class TWPLoginViewController: UIViewController {
                                     if let accountStatus = results![TWProjectsClient.AccountResponseKeys.Status] as? String{
                                         if accountStatus == "OK"{
                                             let account = Account(accountDictionary: results![TWProjectsClient.AccountResponseKeys.Account] as! [String:AnyObject])
-                                            print(account)
+                                            print(account.accountHolderId)
                                         }
                                     }
                                     
+                                    performUIUpdatesOnMainQueue{
+                                        self.performSegueWithIdentifier("AppSegue", sender: nil)
+                                    }
                                 }
                                 else{
                                     print(error)
@@ -72,6 +75,5 @@ class TWPLoginViewController: UIViewController {
             }
         }
     }
-    
 }
 
