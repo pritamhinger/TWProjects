@@ -20,16 +20,17 @@ class TWPLoginViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         
         if apiKeyTextField.text?.characters.count == 0 {
-            print("API is required")
             return
         }
         
         print("API Key is : \(apiKeyTextField.text!)")
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.label.text = "Authenticating"
         //board146head:  232035
         //speak564welly: 239072
         //poland47misty: 231257
-        TWProjectsClient.sharedInstance().getBaseURL(apiKeyTextField.text!, password: "pritamhinger"){ (results, error) in
+        let authenticationHeader = TWProjectsClient.getAuthorizationString(apiKeyTextField.text!, password: "")
+        TWProjectsClient.sharedInstance().getBaseURL(authenticationHeader){ (results, error) in
             if error == nil{
                 if let status = results![TWProjectsClient.AuthenticateResponseKeys.Status] as? String{
                     if status == "OK"{

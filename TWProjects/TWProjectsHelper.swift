@@ -12,9 +12,7 @@ extension TWProjectsClient{
     
     // MARK: - Helper Methods
     
-    func getBaseURL(username: String, password:String, completionHandler: (results:AnyObject?, error:NSError?) -> Void) {
-        let authorizationString = TWProjectsClient.getAuthorizationString(username, password: password)
-        
+    func getBaseURL(authorizationString: String, completionHandler: (results:AnyObject?, error:NSError?) -> Void) {
         TWProjectsClient.sharedInstance().taskForAuthentication(authorizationString){ (results, error) in
             if error == nil{
                 completionHandler(results: results, error: nil)

@@ -10,7 +10,7 @@ import Foundation
 
 extension TWProjectsClient{
     struct APIResource {
-        static let Scheme = "http"
+        static let Scheme = "https"
         static let AuthenticationURL = "authenticate.teamworkpm.net"
         //static let Path = ""
         static let Method = "/authenticate.json"
