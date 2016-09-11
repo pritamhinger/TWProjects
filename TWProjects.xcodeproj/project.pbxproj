@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4857A0651D847728005AC5AC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0641D847728005AC5AC /* MBProgressHUD.m */; };
+		4857A0671D851354005AC5AC /* TWProjectsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0661D851354005AC5AC /* TWProjectsClient.swift */; };
+		4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0681D851999005AC5AC /* TWProjectsHelper.swift */; };
+		4857A06C1D851ACB005AC5AC /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A06B1D851ACB005AC5AC /* APIConstants.swift */; };
+		4857A06E1D851F3A005AC5AC /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A06D1D851F3A005AC5AC /* GCDBlackBox.swift */; };
+		4857A0711D85563F005AC5AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0701D85563F005AC5AC /* User.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -38,6 +43,11 @@
 		4857A0621D847727005AC5AC /* TWProjects-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TWProjects-Bridging-Header.h"; sourceTree = "<group>"; };
 		4857A0631D847728005AC5AC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4857A0641D847728005AC5AC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		4857A0661D851354005AC5AC /* TWProjectsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWProjectsClient.swift; sourceTree = "<group>"; };
+		4857A0681D851999005AC5AC /* TWProjectsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWProjectsHelper.swift; sourceTree = "<group>"; };
+		4857A06B1D851ACB005AC5AC /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		4857A06D1D851F3A005AC5AC /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		4857A0701D85563F005AC5AC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +91,7 @@
 		4857A05D1D844FFD005AC5AC /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				4857A06B1D851ACB005AC5AC /* APIConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -88,6 +99,8 @@
 		4857A05E1D84500F005AC5AC /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				4857A0661D851354005AC5AC /* TWProjectsClient.swift */,
+				4857A0681D851999005AC5AC /* TWProjectsHelper.swift */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -116,6 +129,14 @@
 				4857A0641D847728005AC5AC /* MBProgressHUD.m */,
 			);
 			name = ProgressBar;
+			sourceTree = "<group>";
+		};
+		4857A06F1D85216F005AC5AC /* AppModels */ = {
+			isa = PBXGroup;
+			children = (
+				4857A0701D85563F005AC5AC /* User.swift */,
+			);
+			name = AppModels;
 			sourceTree = "<group>";
 		};
 		48E0E09D1D844E4D00991DF4 = {
@@ -176,6 +197,7 @@
 		48E0E0D71D844E7200991DF4 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				4857A06D1D851F3A005AC5AC /* GCDBlackBox.swift */,
 				4857A0621D847727005AC5AC /* TWProjects-Bridging-Header.h */,
 				48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */,
 			);
@@ -193,16 +215,17 @@
 		48E0E0D91D844E9800991DF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				48E0E0DA1D844E9F00991DF4 /* CoreData */,
+				4857A06F1D85216F005AC5AC /* AppModels */,
+				48E0E0DA1D844E9F00991DF4 /* CoreDataModels */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		48E0E0DA1D844E9F00991DF4 /* CoreData */ = {
+		48E0E0DA1D844E9F00991DF4 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = CoreData;
+			name = CoreDataModels;
 			sourceTree = "<group>";
 		};
 		48E0E0DB1D844EB100991DF4 /* Views */ = {
@@ -345,8 +368,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */,
+				4857A0671D851354005AC5AC /* TWProjectsClient.swift in Sources */,
+				4857A06C1D851ACB005AC5AC /* APIConstants.swift in Sources */,
 				4857A0651D847728005AC5AC /* MBProgressHUD.m in Sources */,
+				4857A0711D85563F005AC5AC /* User.swift in Sources */,
+				4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */,
 				48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */,
+				4857A06E1D851F3A005AC5AC /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

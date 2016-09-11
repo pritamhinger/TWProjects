@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -17,19 +18,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wg-20-1aI">
-                                <rect key="frame" x="281" y="285" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EEG-d2-fd8"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="x8a-En-LoW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMJ-6n-YvS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wg-20-1aI">
+                                        <rect key="frame" x="188" y="280" width="223" height="40"/>
+                                        <color key="backgroundColor" red="0.1823253333568573" green="0.72851759195327759" blue="0.08274734765291214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="223" id="lgj-ZZ-MyT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EEG-d2-fd8"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter your api key here.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9SE-J2-8gu">
+                                        <rect key="frame" x="188" y="242" width="223" height="30"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9Wg-20-1aI" firstAttribute="top" secondItem="9SE-J2-8gu" secondAttribute="bottom" constant="8" id="6Ve-VN-4Jo"/>
+                                    <constraint firstItem="9SE-J2-8gu" firstAttribute="trailing" secondItem="9Wg-20-1aI" secondAttribute="trailing" id="7kC-ZV-jSB"/>
+                                    <constraint firstItem="9Wg-20-1aI" firstAttribute="centerX" secondItem="LMJ-6n-YvS" secondAttribute="centerX" id="GRl-iy-cZ7"/>
+                                    <constraint firstItem="9Wg-20-1aI" firstAttribute="centerY" secondItem="LMJ-6n-YvS" secondAttribute="centerY" id="VFQ-Hz-Koj"/>
+                                    <constraint firstItem="9SE-J2-8gu" firstAttribute="leading" secondItem="9Wg-20-1aI" secondAttribute="leading" id="sHT-8z-nw7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="x8a-En-LoW" secondAttribute="trailing" constant="-20" id="2W8-Js-bLj"/>
+                            <constraint firstItem="x8a-En-LoW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="9ZV-FZ-VjK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x8a-En-LoW" secondAttribute="bottom" id="Nhi-HG-CvL"/>
+                            <constraint firstItem="x8a-En-LoW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="Qrr-IA-wyb"/>
+                            <constraint firstItem="LMJ-6n-YvS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="YfN-Ky-dEM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LMJ-6n-YvS" secondAttribute="trailing" constant="-20" id="jTu-Mf-dW9"/>
+                            <constraint firstItem="LMJ-6n-YvS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="nBo-E8-BNf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LMJ-6n-YvS" secondAttribute="bottom" id="rXv-fU-OFl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="apiKeyTextField" destination="9SE-J2-8gu" id="Rkk-mJ-Iuk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="510" y="233"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="loginBackgroundImage" width="849" height="565"/>
+    </resources>
 </document>
