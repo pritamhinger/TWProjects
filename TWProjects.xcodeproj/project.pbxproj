@@ -13,6 +13,7 @@
 		4857A06C1D851ACB005AC5AC /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A06B1D851ACB005AC5AC /* APIConstants.swift */; };
 		4857A06E1D851F3A005AC5AC /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A06D1D851F3A005AC5AC /* GCDBlackBox.swift */; };
 		4857A0711D85563F005AC5AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0701D85563F005AC5AC /* User.swift */; };
+		4857A0731D85B9BA005AC5AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0721D85B9BA005AC5AC /* Account.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		4857A06B1D851ACB005AC5AC /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		4857A06D1D851F3A005AC5AC /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		4857A0701D85563F005AC5AC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4857A0721D85B9BA005AC5AC /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				4857A0701D85563F005AC5AC /* User.swift */,
+				4857A0721D85B9BA005AC5AC /* Account.swift */,
 			);
 			name = AppModels;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				4857A06C1D851ACB005AC5AC /* APIConstants.swift in Sources */,
 				4857A0651D847728005AC5AC /* MBProgressHUD.m in Sources */,
 				4857A0711D85563F005AC5AC /* User.swift in Sources */,
+				4857A0731D85B9BA005AC5AC /* Account.swift in Sources */,
 				4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */,
 				48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */,
 				4857A06E1D851F3A005AC5AC /* GCDBlackBox.swift in Sources */,

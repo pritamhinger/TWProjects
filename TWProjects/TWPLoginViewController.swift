@@ -32,21 +32,43 @@ class TWPLoginViewController: UIViewController {
         let authenticationHeader = TWProjectsClient.getAuthorizationString(apiKeyTextField.text!, password: "")
         TWProjectsClient.sharedInstance().getBaseURL(authenticationHeader){ (results, error) in
             if error == nil{
-                if let status = results![TWProjectsClient.AuthenticateResponseKeys.Status] as? String{
-                    if status == "OK"{
+                if let userStatus = results![TWProjectsClient.AuthenticateResponseKeys.Status] as? String{
+                    if userStatus == "OK"{
                         let user = User(userDictionary: results![TWProjectsClient.AuthenticateResponseKeys.Account] as! [String:AnyObject]);
                         print("User id is : \(user.userId!)")
                         print("URL is : \(user.url!)")
                         print("\(user.firstName!) \(user.lastName!)")
+                        
+                        performUIUpdatesOnMainQueue{
+                            hud.hideAnimated(true)
+                            
+                            let hudAuthorization = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                            hudAuthorization.label.text = "Authorizing"
+                            let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.ACCOUNT, methodFormat: TWProjectsClient.APIFormat.JSON)
+                            TWProjectsClient.sharedInstance().getAccountDetails(methodName){ (results, error) in
+                                if error == nil{
+                                    if let accountStatus = results![TWProjectsClient.AccountResponseKeys.Status] as? String{
+                                        if accountStatus == "OK"{
+                                            let account = Account(accountDictionary: results![TWProjectsClient.AccountResponseKeys.Account] as! [String:AnyObject])
+                                            print(account)
+                                        }
+                                    }
+                                    
+                                }
+                                else{
+                                    print(error)
+                                }
+                                
+                                performUIUpdatesOnMainQueue{
+                                    hudAuthorization.hideAnimated(true)
+                                }
+                            }
+                        }
                     }
                 }
             }
             else{
                 print(error)
-            }
-            
-            performUIUpdatesOnMainQueue{
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
             }
         }
     }

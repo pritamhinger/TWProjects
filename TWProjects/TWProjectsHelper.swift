@@ -23,6 +23,17 @@ extension TWProjectsClient{
         }
     }
     
+    func getAccountDetails(methodName:String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
+        TWProjectsClient.sharedInstance().taskForGet(methodName){ (results, error) in
+            if error == nil{
+                completionHandler(results: results, error: nil)
+            }
+            else{
+                completionHandler(results: nil, error: error)
+            }
+        }
+    }
+    
     // MARK: - Class Methods
     class func getAuthorizationString(username:String, password:String) -> String{
         let authString = NSString(format: "%@:%@", username,password)
@@ -32,13 +43,41 @@ extension TWProjectsClient{
         return base64AuthData
     }
     
-    class func flickrURLFromParameters() -> NSURL {
+    class func twAuthenticationURL() -> NSURL {
         
         let components = NSURLComponents()
         components.scheme = TWProjectsClient.APIResource.Scheme
         components.host = TWProjectsClient.APIResource.AuthenticationURL
-        components.path = TWProjectsClient.APIResource.Method
+        components.path = TWProjectsClient.APIResource.Path + TWProjectsClient.APIResource.Method
         
         return components.URL!
+    }
+    
+    class func twAPIUrlForMethod(methodName:String, id:String="", urlKey:String="") -> NSURL{
+        let components = NSURLComponents()
+        components.scheme = TWProjectsClient.APIResource.Scheme
+        components.host = TWProjectsClient.APIResource.AuthenticationURL
+        
+        if(id != "" && urlKey != ""){
+            let substitutedMethodName = TWProjectsClient.sharedInstance().subtituteKeyInMethod(methodName, key: urlKey, value: id)
+            components.path = TWProjectsClient.APIResource.Path + "/" + substitutedMethodName!
+        }
+        else{
+            components.path = TWProjectsClient.APIResource.Path + "/" + methodName
+        }
+        
+        return components.URL!
+    }
+    
+    class func getMethodName(methodName:String, methodFormat:String) -> String{
+        return "\(methodName).\(methodFormat)"
+    }
+    
+    private func subtituteKeyInMethod(method: String, key: String, value: String) -> String? {
+        if method.rangeOfString("{\(key)}") != nil {
+            return method.stringByReplacingOccurrencesOfString("{\(key)}", withString: value)
+        } else {
+            return nil
+        }
     }
 }
