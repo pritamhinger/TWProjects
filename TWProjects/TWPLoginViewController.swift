@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TWPLoginViewController.swift
 //  TWProjects
 //
 //  Created by Pritam Hinger on 10/09/16.
@@ -23,7 +23,6 @@ class TWPLoginViewController: UIViewController {
             return
         }
         
-        print("API Key is : \(apiKeyTextField.text!)")
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.label.text = "Authenticating"
         //board146head:  232035
@@ -36,8 +35,8 @@ class TWPLoginViewController: UIViewController {
                     if userStatus == "OK"{
                         let user = User(userDictionary: results![TWProjectsClient.AuthenticateResponseKeys.Account] as! [String:AnyObject]);
                         print("User id is : \(user.userId!)")
-                        print("URL is : \(user.url!)")
-                        print("\(user.firstName!) \(user.lastName!)")
+                        
+                        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.BaseURL, value: CommonFunctions.removeProtocolFromURL(user.url!))
                         
                         performUIUpdatesOnMainQueue{
                             hud.hideAnimated(true)
@@ -45,7 +44,7 @@ class TWPLoginViewController: UIViewController {
                             let hudAuthorization = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                             hudAuthorization.label.text = "Authorizing"
                             let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.ACCOUNT, methodFormat: TWProjectsClient.APIFormat.JSON)
-                            TWProjectsClient.sharedInstance().getAccountDetails(methodName){ (results, error) in
+                            TWProjectsClient.sharedInstance().getAccountDetails(methodName, authorizationCookie: authenticationHeader){ (results, error) in
                                 if error == nil{
                                     if let accountStatus = results![TWProjectsClient.AccountResponseKeys.Status] as? String{
                                         if accountStatus == "OK"{

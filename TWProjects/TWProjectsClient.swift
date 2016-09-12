@@ -61,10 +61,13 @@ class TWProjectsClient: NSObject {
     }
     
     // MARK: - Get Tasks
-    func taskForGet(methodName:String, urlKey: String="", id:String="", completionHandler:(results:AnyObject?, error:NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForGet(methodName: String, authorizationCookie:String = "", urlKey: String = "", id: String = "", completionHandler:(results:AnyObject?, error:NSError?) -> Void) -> NSURLSessionDataTask {
         let request = NSMutableURLRequest(URL: TWProjectsClient.twAPIUrlForMethod(methodName, id: id, urlKey: urlKey))
         request.HTTPMethod = TWProjectsClient.HTTPMethod.GET
-        
+        request.addValue("Basic \(authorizationCookie)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("no-cache", forHTTPHeaderField: "Cache-Control")
         print(request.URL?.absoluteString)
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             func sendError(errorString: String) {

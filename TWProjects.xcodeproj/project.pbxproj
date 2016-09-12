@@ -17,6 +17,8 @@
 		4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0761D85D2EF005AC5AC /* SWRevealViewController.m */; };
 		4857A0791D85D8A7005AC5AC /* TWPDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0781D85D8A7005AC5AC /* TWPDashboardViewController.swift */; };
 		4857A07B1D85D8C1005AC5AC /* TWPProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A07A1D85D8C1005AC5AC /* TWPProjectsViewController.swift */; };
+		4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A07D1D866556005AC5AC /* CommonFunctions.swift */; };
+		4857A0801D8665C9005AC5AC /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A07F1D8665C9005AC5AC /* AppConstants.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -57,6 +59,8 @@
 		4857A0761D85D2EF005AC5AC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		4857A0781D85D8A7005AC5AC /* TWPDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPDashboardViewController.swift; sourceTree = "<group>"; };
 		4857A07A1D85D8C1005AC5AC /* TWPProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsViewController.swift; sourceTree = "<group>"; };
+		4857A07D1D866556005AC5AC /* CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		4857A07F1D8665C9005AC5AC /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				4857A06B1D851ACB005AC5AC /* APIConstants.swift */,
+				4857A07F1D8665C9005AC5AC /* AppConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -159,6 +164,14 @@
 			name = SlideInMenu;
 			sourceTree = "<group>";
 		};
+		4857A07C1D8664C2005AC5AC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4857A07D1D866556005AC5AC /* CommonFunctions.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		48E0E09D1D844E4D00991DF4 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 		48E0E0A81D844E4D00991DF4 /* TWProjects */ = {
 			isa = PBXGroup;
 			children = (
+				4857A07C1D8664C2005AC5AC /* Common */,
 				4857A0601D847677005AC5AC /* Libraries */,
 				4857A05F1D845112005AC5AC /* Storyboards */,
 				4857A05E1D84500F005AC5AC /* APIClient */,
@@ -399,6 +413,8 @@
 				4857A0731D85B9BA005AC5AC /* Account.swift in Sources */,
 				4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */,
 				4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */,
+				4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */,
+				4857A0801D8665C9005AC5AC /* AppConstants.swift in Sources */,
 				48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */,
 				4857A06E1D851F3A005AC5AC /* GCDBlackBox.swift in Sources */,
 			);

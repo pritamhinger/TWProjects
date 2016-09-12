@@ -23,8 +23,8 @@ extension TWProjectsClient{
         }
     }
     
-    func getAccountDetails(methodName:String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
-        TWProjectsClient.sharedInstance().taskForGet(methodName){ (results, error) in
+    func getAccountDetails(methodName: String, authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
+        TWProjectsClient.sharedInstance().taskForGet(methodName, authorizationCookie: authorizationCookie){ (results, error) in
             if error == nil{
                 completionHandler(results: results, error: nil)
             }
@@ -56,7 +56,12 @@ extension TWProjectsClient{
     class func twAPIUrlForMethod(methodName:String, id:String="", urlKey:String="") -> NSURL{
         let components = NSURLComponents()
         components.scheme = TWProjectsClient.APIResource.Scheme
-        components.host = TWProjectsClient.APIResource.AuthenticationURL
+        if let baseURL = CommonFunctions.getTWBaseURL(){
+            components.host = baseURL
+        }
+        else{
+            fatalError("Account not configured.")
+        }
         
         if(id != "" && urlKey != ""){
             let substitutedMethodName = TWProjectsClient.sharedInstance().subtituteKeyInMethod(methodName, key: urlKey, value: id)
