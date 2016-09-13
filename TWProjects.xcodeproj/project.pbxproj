@@ -19,6 +19,8 @@
 		4857A07B1D85D8C1005AC5AC /* TWPProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A07A1D85D8C1005AC5AC /* TWPProjectsViewController.swift */; };
 		4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A07D1D866556005AC5AC /* CommonFunctions.swift */; };
 		4857A0801D8665C9005AC5AC /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A07F1D8665C9005AC5AC /* AppConstants.swift */; };
+		4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0811D87BFCB005AC5AC /* CoreDataStack.swift */; };
+		4857A0841D87C05F005AC5AC /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		4857A07A1D85D8C1005AC5AC /* TWPProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsViewController.swift; sourceTree = "<group>"; };
 		4857A07D1D866556005AC5AC /* CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		4857A07F1D8665C9005AC5AC /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		4857A0811D87BFCB005AC5AC /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			children = (
 				4857A06B1D851ACB005AC5AC /* APIConstants.swift */,
 				4857A07F1D8665C9005AC5AC /* AppConstants.swift */,
+				4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 		48E0E0D71D844E7200991DF4 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				4857A0811D87BFCB005AC5AC /* CoreDataStack.swift */,
 				4857A06D1D851F3A005AC5AC /* GCDBlackBox.swift */,
 				4857A0621D847727005AC5AC /* TWProjects-Bridging-Header.h */,
 				48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */,
@@ -403,7 +409,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */,
 				48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */,
+				4857A0841D87C05F005AC5AC /* CoreDataConstants.swift in Sources */,
 				4857A0671D851354005AC5AC /* TWProjectsClient.swift in Sources */,
 				4857A0791D85D8A7005AC5AC /* TWPDashboardViewController.swift in Sources */,
 				4857A06C1D851ACB005AC5AC /* APIConstants.swift in Sources */,

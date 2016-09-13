@@ -7,8 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 struct CommonFunctions {
+    
+    static func showError(controller:UIViewController, message:String, title:String, style:UIAlertControllerStyle){
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: style)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alertViewController.addAction(okAction)
+        controller.presentViewController(alertViewController, animated: true, completion: nil)
+    }
     
     static func addToUserDefault(key: String, value:AnyObject){
         let userDefaults = NSUserDefaults.standardUserDefaults()
