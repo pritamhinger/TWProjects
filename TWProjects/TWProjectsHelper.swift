@@ -23,7 +23,7 @@ extension TWProjectsClient{
         }
     }
     
-    func getAccountDetails(methodName: String, authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
+    func getDataForMethod(methodName: String, authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
         TWProjectsClient.sharedInstance().taskForGet(methodName, authorizationCookie: authorizationCookie){ (results, error) in
             if error == nil{
                 completionHandler(results: results, error: nil)

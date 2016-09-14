@@ -16,9 +16,10 @@ extension TWProjectsClient{
         static let Method = "/authenticate.json"
     }
     
-    struct APIMethods {
-        static let Accounts = "account"
-    }
+//    struct APIMethods {
+//        static let Accounts = "account"
+//        
+//    }
     
     struct APIFormat {
         static let JSON = "json"
@@ -34,5 +35,6 @@ extension TWProjectsClient{
     
     struct APIMethod {
         static let ACCOUNT = "account"
+        static let Companies = "companies"
     }
 }

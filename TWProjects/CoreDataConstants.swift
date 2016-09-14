@@ -17,7 +17,7 @@ extension CoreDataStack{
     }
     
     struct  ModelName {
-        static let TeamWorkDB = "TeamWorkDB"
+        static let TeamWorkDB = "TeamworkSchema"
     }
     
     struct Constants {

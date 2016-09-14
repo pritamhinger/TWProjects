@@ -29,6 +29,7 @@
 		4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0911D89BF06005AC5AC /* CompanyDAO.swift */; };
 		4857A0941D89BFEA005AC5AC /* ResponseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */; };
 		4857A0961D89CEB0005AC5AC /* ProjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0951D89CEB0005AC5AC /* ProjectDAO.swift */; };
+		4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0981D89E271005AC5AC /* DashboardExtension.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		4857A0911D89BF06005AC5AC /* CompanyDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyDAO.swift; sourceTree = "<group>"; };
 		4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseKeys.swift; sourceTree = "<group>"; };
 		4857A0951D89CEB0005AC5AC /* ProjectDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDAO.swift; sourceTree = "<group>"; };
+		4857A0981D89E271005AC5AC /* DashboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardExtension.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,14 @@
 			name = Schema;
 			sourceTree = "<group>";
 		};
+		4857A0971D89E230005AC5AC /* Controller Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4857A0981D89E271005AC5AC /* DashboardExtension.swift */,
+			);
+			name = "Controller Extensions";
+			sourceTree = "<group>";
+		};
 		48E0E09D1D844E4D00991DF4 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +245,7 @@
 				48E0E0DB1D844EB100991DF4 /* Views */,
 				48E0E0D91D844E9800991DF4 /* Models */,
 				48E0E0D81D844E7B00991DF4 /* Controllers */,
+				4857A0971D89E230005AC5AC /* Controller Extensions */,
 				48E0E0D71D844E7200991DF4 /* Global */,
 				48E0E0B01D844E4D00991DF4 /* Assets.xcassets */,
 				48E0E0B51D844E4D00991DF4 /* Info.plist */,
@@ -441,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */,
 				4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */,
 				48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */,
 				4857A0841D87C05F005AC5AC /* CoreDataConstants.swift in Sources */,

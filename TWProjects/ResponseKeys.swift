@@ -98,6 +98,8 @@ extension TWProjectsClient{
         static let Id = "id"
         static let City = "city"
         static let Fax = "fax"
+        static let Status = "STATUS"
+        static let Companies = "companies"
     }
     
     struct ProjectResponseKeys {

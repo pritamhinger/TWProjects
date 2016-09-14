@@ -23,6 +23,16 @@ struct CommonFunctions {
         userDefaults.setObject(value, forKey: key)
     }
     
+    static func getUserDefaultForKey(key:String) -> AnyObject?{
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let value =  userDefaults.valueForKey(key){
+            return value
+        }
+        else{
+            return nil
+        }
+    }
+    
     static func removeProtocolFromURL(urlString:String) -> String{
         let url = NSURL(string: urlString)
         let scheme = url?.scheme
