@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15G1004" minimumToolsVersion="Xcode 7.0">
-    <entity name="Account" syncable="YES"/>
-    <entity name="User" syncable="YES"/>
+    <entity name="Company" representedClassName=".Company" syncable="YES">
+        <attribute name="address_one" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address_two" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="can_see_private" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="company_name_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Project" inverseName="company" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName=".Project" syncable="YES">
+        <attribute name="announcement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="announcementHTML" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created0n" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="defaultPrivacy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="filesAutoNewVersion" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="harvestTimersEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isProjectAdmin" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastChangedOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notifyEveryone" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="privacyEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="replyByEmailEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="showAnnouncement" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="starred" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startPage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="projects" inverseEntity="Company" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="45"/>
-        <element name="Account" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="Company" positionX="-45" positionY="0" width="128" height="255"/>
+        <element name="Project" positionX="-18" positionY="126" width="128" height="405"/>
     </elements>
 </model>

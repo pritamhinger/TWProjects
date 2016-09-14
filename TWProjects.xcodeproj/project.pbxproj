@@ -22,6 +22,12 @@
 		4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0811D87BFCB005AC5AC /* CoreDataStack.swift */; };
 		4857A0841D87C05F005AC5AC /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */; };
 		4857A0881D87C93C005AC5AC /* TeamworkSchema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0861D87C93C005AC5AC /* TeamworkSchema.xcdatamodeld */; };
+		4857A08D1D89BE71005AC5AC /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0891D89BE71005AC5AC /* Project+CoreDataProperties.swift */; };
+		4857A08E1D89BE71005AC5AC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A08A1D89BE71005AC5AC /* Project.swift */; };
+		4857A08F1D89BE71005AC5AC /* Company+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A08B1D89BE71005AC5AC /* Company+CoreDataProperties.swift */; };
+		4857A0901D89BE71005AC5AC /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A08C1D89BE71005AC5AC /* Company.swift */; };
+		4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0911D89BF06005AC5AC /* CompanyDAO.swift */; };
+		4857A0941D89BFEA005AC5AC /* ResponseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -67,6 +73,12 @@
 		4857A0811D87BFCB005AC5AC /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
 		4857A0871D87C93C005AC5AC /* TeamworkSchema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamworkSchema.xcdatamodel; sourceTree = "<group>"; };
+		4857A0891D89BE71005AC5AC /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4857A08A1D89BE71005AC5AC /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		4857A08B1D89BE71005AC5AC /* Company+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Company+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4857A08C1D89BE71005AC5AC /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		4857A0911D89BF06005AC5AC /* CompanyDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyDAO.swift; sourceTree = "<group>"; };
+		4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseKeys.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +125,7 @@
 				4857A06B1D851ACB005AC5AC /* APIConstants.swift */,
 				4857A07F1D8665C9005AC5AC /* AppConstants.swift */,
 				4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */,
+				4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -158,6 +171,7 @@
 			children = (
 				4857A0701D85563F005AC5AC /* User.swift */,
 				4857A0721D85B9BA005AC5AC /* Account.swift */,
+				4857A0911D89BF06005AC5AC /* CompanyDAO.swift */,
 			);
 			name = AppModels;
 			sourceTree = "<group>";
@@ -277,6 +291,10 @@
 		48E0E0DA1D844E9F00991DF4 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				4857A0891D89BE71005AC5AC /* Project+CoreDataProperties.swift */,
+				4857A08A1D89BE71005AC5AC /* Project.swift */,
+				4857A08B1D89BE71005AC5AC /* Company+CoreDataProperties.swift */,
+				4857A08C1D89BE71005AC5AC /* Company.swift */,
 			);
 			name = CoreDataModels;
 			sourceTree = "<group>";
@@ -426,16 +444,22 @@
 				4857A0671D851354005AC5AC /* TWProjectsClient.swift in Sources */,
 				4857A0791D85D8A7005AC5AC /* TWPDashboardViewController.swift in Sources */,
 				4857A06C1D851ACB005AC5AC /* APIConstants.swift in Sources */,
+				4857A08E1D89BE71005AC5AC /* Project.swift in Sources */,
+				4857A0941D89BFEA005AC5AC /* ResponseKeys.swift in Sources */,
 				4857A0651D847728005AC5AC /* MBProgressHUD.m in Sources */,
 				4857A0711D85563F005AC5AC /* User.swift in Sources */,
 				4857A07B1D85D8C1005AC5AC /* TWPProjectsViewController.swift in Sources */,
 				4857A0731D85B9BA005AC5AC /* Account.swift in Sources */,
+				4857A0901D89BE71005AC5AC /* Company.swift in Sources */,
 				4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */,
 				4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */,
+				4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */,
 				4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */,
 				4857A0801D8665C9005AC5AC /* AppConstants.swift in Sources */,
 				48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */,
 				4857A06E1D851F3A005AC5AC /* GCDBlackBox.swift in Sources */,
+				4857A08D1D89BE71005AC5AC /* Project+CoreDataProperties.swift in Sources */,
+				4857A08F1D89BE71005AC5AC /* Company+CoreDataProperties.swift in Sources */,
 				4857A0881D87C93C005AC5AC /* TeamworkSchema.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

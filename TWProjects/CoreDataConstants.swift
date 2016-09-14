@@ -12,6 +12,7 @@ extension CoreDataStack{
     struct EntityName {
         static let User = "User"
         static let Account = "Account"
+        static let Company = "Company"
     }
     
     struct  ModelName {
