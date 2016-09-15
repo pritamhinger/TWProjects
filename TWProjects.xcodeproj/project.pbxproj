@@ -30,6 +30,8 @@
 		4857A0941D89BFEA005AC5AC /* ResponseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */; };
 		4857A0961D89CEB0005AC5AC /* ProjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0951D89CEB0005AC5AC /* ProjectDAO.swift */; };
 		4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0981D89E271005AC5AC /* DashboardExtension.swift */; };
+		4857A09B1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */; };
+		4857A09D1D8B1B7D005AC5AC /* ProjectsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -83,6 +85,8 @@
 		4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseKeys.swift; sourceTree = "<group>"; };
 		4857A0951D89CEB0005AC5AC /* ProjectDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDAO.swift; sourceTree = "<group>"; };
 		4857A0981D89E271005AC5AC /* DashboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardExtension.swift; sourceTree = "<group>"; };
+		4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPCoreDataHelperViewController.swift; sourceTree = "<group>"; };
+		4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsExtension.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				4857A0981D89E271005AC5AC /* DashboardExtension.swift */,
+				4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */,
 			);
 			name = "Controller Extensions";
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */,
 				4857A0781D85D8A7005AC5AC /* TWPDashboardViewController.swift */,
 				4857A07A1D85D8C1005AC5AC /* TWPProjectsViewController.swift */,
+				4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */,
 				4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */,
 				48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */,
+				4857A09B1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift in Sources */,
 				4857A0841D87C05F005AC5AC /* CoreDataConstants.swift in Sources */,
 				4857A0671D851354005AC5AC /* TWProjectsClient.swift in Sources */,
 				4857A0791D85D8A7005AC5AC /* TWPDashboardViewController.swift in Sources */,
@@ -477,6 +484,7 @@
 				4857A08D1D89BE71005AC5AC /* Project+CoreDataProperties.swift in Sources */,
 				4857A08F1D89BE71005AC5AC /* Company+CoreDataProperties.swift in Sources */,
 				4857A0881D87C93C005AC5AC /* TeamworkSchema.xcdatamodeld in Sources */,
+				4857A09D1D8B1B7D005AC5AC /* ProjectsExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

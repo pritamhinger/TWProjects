@@ -25,9 +25,6 @@ class TWPLoginViewController: UIViewController {
         
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.label.text = "Authenticating"
-        //board146head:  232035
-        //speak564welly: 239072
-        //poland47misty: 231257
         let authenticationHeader = TWProjectsClient.getAuthorizationString(apiKeyTextField.text!, password: "")
         TWProjectsClient.sharedInstance().getBaseURL(authenticationHeader){ (results, error) in
             if error == nil{
@@ -50,6 +47,7 @@ class TWPLoginViewController: UIViewController {
                                         if accountStatus == "OK"{
                                             let account = Account(accountDictionary: results![TWProjectsClient.AccountResponseKeys.Account] as! [String:AnyObject])
                                             print(account.accountHolderId)
+                                            print(account.cacheUUID)
                                         }
                                     }
                                     

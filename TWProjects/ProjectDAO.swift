@@ -34,7 +34,7 @@ struct ProjectDAO {
     let announcementHTML: String?
     let company: CompanyDAO?
     
-    init(userDictionary:[String:AnyObject], companyDAO:CompanyDAO){
+    init(userDictionary:[String:AnyObject], companyDAO:CompanyDAO?){
         self.replyByEmailEnabled = userDictionary[TWProjectsClient.ProjectResponseKeys.ReplyByEmailEnabled] as? Bool
         self.starred = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? Bool
         self.showAnnouncement = userDictionary[TWProjectsClient.ProjectResponseKeys.ShowAnnouncement] as? Bool
@@ -58,7 +58,7 @@ struct ProjectDAO {
         self.startPage = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
         self.notifyEveryone = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? Bool
         self.announcementHTML = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.company =  companyDAO
+        self.company =  companyDAO!
     }
     
     

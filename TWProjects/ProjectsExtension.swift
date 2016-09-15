@@ -1,5 +1,5 @@
 //
-//  DashboardExtension.swift
+//  ProjectsExtension.swift
 //  TWProjects
 //
 //  Created by Pritam Hinger on 15/09/16.
@@ -8,23 +8,23 @@
 
 import Foundation
 
-extension TWPDashboardViewController{
-    func readCompaniesFromPersistentStore() {
+extension TWPProjectsViewController{
+    func loadProjectsFromStore()  {
         if let fc = fetchResultsController{
             do{
                 try fc.performFetch()
-               
+                
                 if let fc = fetchResultsController{
-                    var totalLocations = 0;
+                    var totalProjects = 0;
                     var totalSections = 0;
                     
                     for sec in fc.sections! {
-                        totalLocations =  totalLocations + sec.numberOfObjects
+                        totalProjects =  totalProjects + sec.numberOfObjects
                         totalSections = totalSections + 1
                     }
                     
                     
-                    print("Totol Companies :\(totalLocations)")
+                    print("Totol Projects :\(totalProjects)")
                     print("Totol Sections :\(totalSections)")
                     var sectionIndex = 0
                     
@@ -35,10 +35,10 @@ extension TWPDashboardViewController{
                             let indexPath = NSIndexPath(forItem: index, inSection: sectionIndex)
                             
                             let obj = fc.objectAtIndexPath(indexPath)
-                            let company = (obj as! Company)
+                            let project = (obj as! Project)
                             
-                            companyIDsStoredInDB.append(company.id!)
-                            companies.append(company)
+                            projectIds.append(project.id!)
+                            projects.append(project)
                             index = index + 1
                         }
                         

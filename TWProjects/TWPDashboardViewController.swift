@@ -9,12 +9,11 @@
 import UIKit
 import CoreData
 
-class TWPDashboardViewController: UIViewController {
+class TWPDashboardViewController: TWPCoreDataHelperViewController {
 
-    
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
-    
-    var fetchResultsController: NSFetchedResultsController?
+    var companies = [Company]();
+    var companyIDsStoredInDB = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +24,23 @@ class TWPDashboardViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        entityName = CoreDataStack.EntityName.Company
         let coreDataStack = (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack
-        let fetchRequest = NSFetchRequest(entityName: CoreDataStack.EntityName.Company)
+        let fetchRequest = NSFetchRequest(entityName: entityName!)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key:"id", ascending: false)]
         
         fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
         readCompaniesFromPersistentStore()
         
+        getCompaniesFromTWServers()
+    }
+    
+    func getCompaniesFromTWServers() {
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Companies, methodFormat: TWProjectsClient.APIFormat.JSON)
             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authorizationCookie){ (results, error) in
                 
                 if error == nil{
-                    print(results!)
                     if let status = results![TWProjectsClient.CompanyResponseKeys.Status] as? String{
                         if status == "OK"{
                             if let companiesJSON = results![TWProjectsClient.CompanyResponseKeys.Companies] as? [[String:AnyObject]]{
@@ -53,8 +56,14 @@ class TWPDashboardViewController: UIViewController {
                                 print(companiesDAO)
                                 
                                 for comp in companiesDAO{
-                                    let company = Company(companyDAO: comp, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
-                                    print(company)
+                                    if !self.companyIDsStoredInDB.contains(comp.id!){
+                                        let company = Company(companyDAO: comp, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
+                                        print("Saving Company \n \(company) ")
+                                    }
+                                    else{
+                                        // TODO: Sync Company Data as passed from Server with the Company data stored in Persistent Store
+                                        print("Skipping Save. Will update company data in future releases")
+                                    }
                                 }
                                 
                                 (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack.save()
@@ -68,6 +77,5 @@ class TWPDashboardViewController: UIViewController {
                 
             }
         }
-        
     }
 }
