@@ -40,25 +40,25 @@ struct ProjectDAO {
         self.showAnnouncement = userDictionary[TWProjectsClient.ProjectResponseKeys.ShowAnnouncement] as? Bool
         self.harvestTimersEnabled = userDictionary[TWProjectsClient.ProjectResponseKeys.HarvestTimersEnabled] as? Bool
         self.status = userDictionary[TWProjectsClient.ProjectResponseKeys.Status] as? String
-        self.subStatus = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.defaultPrivacy = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.createdOn = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? NSDate
+        self.subStatus = userDictionary[TWProjectsClient.ProjectResponseKeys.SubStatus] as? String
+        self.defaultPrivacy = userDictionary[TWProjectsClient.ProjectResponseKeys.DefaultPrivacy] as? String
+        self.createdOn = userDictionary[TWProjectsClient.ProjectResponseKeys.CreatedOn] as? NSDate
         self.filesAutoNewVersion = userDictionary[TWProjectsClient.ProjectResponseKeys.FilesAutoNewVersion] as? Bool
-        self.tags = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.logo = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.startDate = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? NSDate
-        self.id = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.lastChangedOn = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? NSDate
+        self.tags = userDictionary[TWProjectsClient.ProjectResponseKeys.Tags] as? String
+        self.logo = userDictionary[TWProjectsClient.ProjectResponseKeys.Logo] as? String
+        self.startDate = userDictionary[TWProjectsClient.ProjectResponseKeys.StartDate] as? NSDate
+        self.id = userDictionary[TWProjectsClient.ProjectResponseKeys.Id] as? String
+        self.lastChangedOn = userDictionary[TWProjectsClient.ProjectResponseKeys.LastChangedOn] as? NSDate
         self.name = userDictionary[TWProjectsClient.ProjectResponseKeys.Name] as? String
-        self.endDate = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? NSDate
-        self.privacyEnabled = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? Bool
-        self.desc = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.announcement = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.isProjectAdmin = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? Bool
-        self.startPage = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.notifyEveryone = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? Bool
-        self.announcementHTML = userDictionary[TWProjectsClient.ProjectResponseKeys.Starred] as? String
-        self.company =  companyDAO!
+        self.endDate = userDictionary[TWProjectsClient.ProjectResponseKeys.EndDate] as? NSDate
+        self.privacyEnabled = userDictionary[TWProjectsClient.ProjectResponseKeys.PrivacyEnabled] as? Bool
+        self.desc = userDictionary[TWProjectsClient.ProjectResponseKeys.Description] as? String
+        self.announcement = userDictionary[TWProjectsClient.ProjectResponseKeys.Announcement] as? String
+        self.isProjectAdmin = userDictionary[TWProjectsClient.ProjectResponseKeys.IsProjectAdmin] as? Bool
+        self.startPage = userDictionary[TWProjectsClient.ProjectResponseKeys.StartPage] as? String
+        self.notifyEveryone = userDictionary[TWProjectsClient.ProjectResponseKeys.NotifyEveryone] as? Bool
+        self.announcementHTML = userDictionary[TWProjectsClient.ProjectResponseKeys.AnnouncementHTML] as? String
+        self.company =  companyDAO
     }
     
     

@@ -127,6 +127,7 @@ extension TWProjectsClient{
         static let NotifyEveryone = "notifyeveryone"
         static let AnnouncementHTML = "announcementHTML"
         static let ResponseStatus = "STATUS"
+        static let Projects = "projects"
     }
     
     struct  AuthenticateResponseKeys {

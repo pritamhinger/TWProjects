@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 
-class TWPProjectsViewController: TWPCoreDataHelperViewController {
+class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDataSource, UITableViewDelegate {
 
     var projects = [Project]()
     var projectIds = [String]()
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
@@ -39,6 +40,18 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController {
         }
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return projects.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("projectCell", forIndexPath: indexPath)
+        let project = projects[indexPath.row]
+        cell.textLabel?.text = project.name
+        cell.detailTextLabel?.text = project.desc
+        return cell
+    }
+    
     func getProjectsFromTWServer(){
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             
@@ -46,9 +59,10 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController {
             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authorizationCookie){ (results, error) in
                 
                 if error == nil{
-                    if let status = results![TWProjectsClient.CompanyResponseKeys.Status] as? String{
+                    if let status = results![TWProjectsClient.ProjectResponseKeys.ResponseStatus] as? String{
                         if status == "OK"{
-                            if let projectsJSON = results![TWProjectsClient.ProjectResponseKeys.ResponseStatus] as? [[String:AnyObject]]{
+                            print(results!)
+                            if let projectsJSON = results![TWProjectsClient.ProjectResponseKeys.Projects] as? [[String:AnyObject]]{
                                 var projectsDAO = [ProjectDAO]()
                                 var projectDAO:ProjectDAO?
                                 for projectJSON in projectsJSON{
