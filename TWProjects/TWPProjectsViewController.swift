@@ -13,8 +13,8 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
 
     var projects = [Project]()
     var projectIds = [String]()
+    var sectionTitles = [String]()
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -34,10 +34,11 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
         
         loadProjectsFromStore()
-        
-        if projects.count == 0{
-            getProjectsFromTWServer()
-        }
+        syncProjectsFromTWServer()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +53,7 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         return cell
     }
     
-    func getProjectsFromTWServer(){
+    func syncProjectsFromTWServer(){
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             
             let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
@@ -75,15 +76,24 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
                                 for proj in projectsDAO{
                                     if !self.projectIds.contains(proj.id!){
                                         let project = Project(projectDAO: proj, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
-                                        print("Saving Project \n \(project) ")
+                                        self.projects.append(project)
                                     }
                                     else{
-                                        // TODO: Sync Company Data as passed from Server with the Company data stored in Persistent Store
-                                        print("Skipping Save. Will update project data in future releases")
+                                        let storedProject = self.projects.filter{ $0.id! == proj.id! }.first
+                                        storedProject?.starred = proj.starred
+                                        storedProject?.desc = proj.desc
+                                        storedProject?.tags = proj.tags
+                                        storedProject?.startDate = proj.startDate
+                                        storedProject?.endDate = proj.endDate
+                                        storedProject?.name = proj.name
                                     }
                                 }
                                 
                                 (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack.save()
+                                
+                                performUIUpdatesOnMainQueue{
+                                    self.tableView.reloadData()
+                                }
                             }
                         }
                     }

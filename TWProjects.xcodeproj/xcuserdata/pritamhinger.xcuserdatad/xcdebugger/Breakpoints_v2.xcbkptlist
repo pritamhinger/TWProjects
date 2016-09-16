@@ -214,16 +214,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TWProjects/TWPProjectsViewController.swift"
+            timestampString = "495696115.864952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "syncProjectsFromTWServer()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TWProjects/TWPProjectsViewController.swift"
-            timestampString = "495658702.941437"
+            timestampString = "495696226.776047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "getProjectsFromTWServer()"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "syncProjectsFromTWServer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
