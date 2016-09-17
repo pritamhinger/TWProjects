@@ -142,7 +142,7 @@ extension TWPProjectsViewController{
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("projectCell", forIndexPath: indexPath) as! TWPProjectsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(AppConstants.CellIdentifier.ProjectCell, forIndexPath: indexPath) as! TWPProjectsTableViewCell
         
         let project: Project?
         if starredProjects.count > 0 && indexPath.section == 0{

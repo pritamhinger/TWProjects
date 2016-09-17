@@ -13,4 +13,8 @@ struct AppConstants {
         static let BaseURL = "BaseURL"
         static let AuthorizationCookie = "AuthorizationCookie"
     }
+    
+    struct CellIdentifier {
+        static let ProjectCell = "projectCell"
+    }
 }
