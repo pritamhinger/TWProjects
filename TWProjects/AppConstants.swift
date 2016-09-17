@@ -16,5 +16,10 @@ struct AppConstants {
     
     struct CellIdentifier {
         static let ProjectCell = "projectCell"
+        static let ProjectPropertyCell = "projectPropertyCell"
+    }
+    
+    struct  SegueIdentifier {
+        static let AddProjectSegue = "addProjectSegue"
     }
 }

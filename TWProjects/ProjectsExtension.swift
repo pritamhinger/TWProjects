@@ -159,7 +159,6 @@ extension TWPProjectsViewController{
         }
         else{
             cell.projectStarredImageView.image = UIImage(named: "Unstarred")
-            print("Project Name: \(project?.name!) with id: \(project?.id!)")
         }
         
         cell.projectStarredImageView.userInteractionEnabled = true
