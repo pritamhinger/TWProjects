@@ -90,6 +90,7 @@ extension TWPProjectsViewController{
                                         storedProject?.tags = proj.tags
                                         storedProject?.startDate = proj.startDate
                                         storedProject?.endDate = proj.endDate
+                                        storedProject?.lastChangedOn = proj.lastChangedOn
                                         storedProject?.name = proj.name
                                         if storedProject?.starred! == 1{
                                             self.starredProjects.append(storedProject!)
@@ -158,10 +159,11 @@ extension TWPProjectsViewController{
         }
         else{
             cell.projectStarredImageView.image = UIImage(named: "Unstarred")
+            print("Project Name: \(project?.name!) with id: \(project?.id!)")
         }
         
         cell.projectStarredImageView.userInteractionEnabled = true
-        cell.projectStarredImageView.tag = indexPath.row
+        cell.projectStarredImageView.tag = Int((project?.id!)!)!
         
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(TWPProjectsViewController.projectStarredImageTapped(_:)))
         imageTapGesture.numberOfTapsRequired = 1

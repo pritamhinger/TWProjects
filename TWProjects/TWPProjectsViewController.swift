@@ -48,17 +48,31 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
     // MARK: - Image Tap Gesture Handler
     func projectStarredImageTapped(sender:AnyObject) {
         let gesture = sender as! UITapGestureRecognizer
-        let project = projects[(gesture.view?.tag)!]
-        if project.starred! == 1 {
-            project.starred = NSNumber(int: 0);
-            starredProjects.removeAtIndex((gesture.view?.tag)!)
+        let projectId = (gesture.view?.tag)!
+        let project = self.projects.filter{ $0.id! == "\(projectId)" }.first
+        var resourcePath = ""
+        if project!.starred! == 1 {
+            project!.starred = NSNumber(int: 0);
+            starredProjects.removeAtIndex(starredProjects.indexOf(project!)!)
+            resourcePath = TWProjectsClient.APIMethod.UnstarProject
         }
         else{
-            project.starred = NSNumber(int: 1);
-            starredProjects.append(project)
+            project!.starred = NSNumber(int: 1);
+            starredProjects.append(project!)
+            resourcePath = TWProjectsClient.APIMethod.StarProject
         }
         
-        (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack.save()
-        tableView.reloadData()
+        TWProjectsClient.sharedInstance().updateResourceForMethod(resourcePath, urlKey: TWProjectsClient.URLKeys.ProjectId, id: "\(projectId)", authorizationCookie: ""){ (results, error) in
+            if error == nil{
+                print("Resource Updated")
+                performUIUpdatesOnMainQueue{
+                    (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack.save()
+                    self.tableView.reloadData()
+                }
+            }
+            else{
+                print("Resource Update failed")
+            }
+        }
     }
 }

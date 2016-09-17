@@ -28,9 +28,15 @@ extension TWProjectsClient{
         static let DELETE = "DELETE"
     }
     
+    struct URLKeys {
+        static let ProjectId = "project_id"
+    }
+    
     struct APIMethod {
         static let ACCOUNT = "account"
         static let Companies = "companies"
         static let Projects = "projects"
+        static let StarProject = "projects/{project_id}/star.json"
+        static let UnstarProject = "/projects/{project_id}/unstar.json"
     }
 }

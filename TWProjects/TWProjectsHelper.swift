@@ -34,6 +34,17 @@ extension TWProjectsClient{
         }
     }
     
+    func updateResourceForMethod(methodName:String, urlKey: String = "", id: String = "", authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
+        TWProjectsClient.sharedInstance().taskForPut(methodName, authorizationCookie: authorizationCookie, urlKey: urlKey, id: id){ (results, error) in
+            if error == nil{
+                completionHandler(results: results, error: nil)
+            }
+            else{
+                completionHandler(results: nil, error: error)
+            }
+        }
+    }
+    
     // MARK: - Class Methods
     class func getAuthorizationString(username:String, password:String) -> String{
         let authString = NSString(format: "%@:%@", username,password)
