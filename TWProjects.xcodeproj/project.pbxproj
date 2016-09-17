@@ -39,6 +39,7 @@
 		489957B31D8DAB0D00595FA8 /* TWPCustomModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957B21D8DAB0D00595FA8 /* TWPCustomModalTransitioningDelegate.swift */; };
 		489957B51D8DAB7800595FA8 /* TWPCustomModalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957B41D8DAB7800595FA8 /* TWPCustomModalInteractiveTransition.swift */; };
 		489957B71D8DAFA200595FA8 /* TWPCustomModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957B61D8DAFA200595FA8 /* TWPCustomModalTransitionAnimator.swift */; };
+		489957B91D8DC20600595FA8 /* NewProjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957B81D8DC20600595FA8 /* NewProjectExtension.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		489957B21D8DAB0D00595FA8 /* TWPCustomModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPCustomModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		489957B41D8DAB7800595FA8 /* TWPCustomModalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPCustomModalInteractiveTransition.swift; sourceTree = "<group>"; };
 		489957B61D8DAFA200595FA8 /* TWPCustomModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPCustomModalTransitionAnimator.swift; sourceTree = "<group>"; };
+		489957B81D8DC20600595FA8 /* NewProjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectExtension.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				4857A0981D89E271005AC5AC /* DashboardExtension.swift */,
 				4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */,
+				489957B81D8DC20600595FA8 /* NewProjectExtension.swift */,
 			);
 			name = "Controller Extensions";
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */,
+				489957B91D8DC20600595FA8 /* NewProjectExtension.swift in Sources */,
 				4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */,
 				48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */,
 				4857A09B1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift in Sources */,

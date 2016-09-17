@@ -27,4 +27,8 @@ struct AppConstants {
     struct StoryboardVCIdentifier {
         static let DateTimePickerVCId = "DateTimePickerVCId"
     }
+    
+    struct NotificationName {
+        static let DateChosenNotification = "dateChosenNotification"
+    }
 }

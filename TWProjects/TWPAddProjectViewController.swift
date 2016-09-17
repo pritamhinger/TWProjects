@@ -11,38 +11,24 @@ import UIKit
 class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var customModalTransitioningDelegate: TWPCustomModalTransitioningDelegate?
+    var chosenIndexPath:NSIndexPath?
+    var startDate:NSDate?
+    var endDate:NSDate?
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TWPAddProjectViewController.setDate(_:)), name: AppConstants.NotificationName.DateChosenNotification, object: nil)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(AppConstants.CellIdentifier.ProjectPropertyCell, forIndexPath: indexPath) as UITableViewCell
-        
-        cell.detailTextLabel?.text = ""
-        
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Company: "
-        case 1:
-            cell.textLabel?.text = "Tags: "
-            cell.detailTextLabel?.text = "Not Tagged"
-        case 2:
-            cell.textLabel?.text = "Category: "
-            cell.detailTextLabel?.text = "No Category"
-        case 3:
-            cell.textLabel?.text = "Start Date: "
-        case 4:
-            cell.textLabel?.text = "End Date: "
-        default:
-            cell.textLabel?.text = ""
-        }
-        
-        return cell
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AppConstants.NotificationName.DateChosenNotification, object: nil)
     }
     
     @IBAction func cancelAddProjectForm(sender: UIBarButtonItem) {
@@ -51,12 +37,6 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func saveProject(sender: UIBarButtonItem) {
         
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row > 2{
-            performSegueWithIdentifier(AppConstants.SegueIdentifier.DateTimePickerSegue, sender: nil)
-        }
     }
     
     // MARK: - Navigation
