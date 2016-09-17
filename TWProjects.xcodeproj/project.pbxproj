@@ -34,6 +34,7 @@
 		4857A09D1D8B1B7D005AC5AC /* ProjectsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */; };
 		489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */; };
 		489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */; };
+		489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */; };
 		48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */; };
 		48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */; };
 		48E0E0AF1D844E4D00991DF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E0AD1D844E4D00991DF4 /* Main.storyboard */; };
@@ -91,6 +92,7 @@
 		4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsExtension.swift; sourceTree = "<group>"; };
 		489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAddProjectViewController.swift; sourceTree = "<group>"; };
+		489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPDateTimePickerViewController.swift; sourceTree = "<group>"; };
 		48E0E0A61D844E4D00991DF4 /* TWProjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWProjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E0A91D844E4D00991DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWPLoginViewController.swift; sourceTree = "<group>"; };
@@ -223,11 +225,11 @@
 			name = "Controller Extensions";
 			sourceTree = "<group>";
 		};
-		489957A51D8D006300595FA8 /* Custom Components */ = {
+		489957A51D8D006300595FA8 /* HalfModal */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "Custom Components";
+			name = HalfModal;
 			sourceTree = "<group>";
 		};
 		489957A61D8D008700595FA8 /* TableViewCells */ = {
@@ -236,6 +238,14 @@
 				489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */,
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		489957AB1D8D67CE00595FA8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		48E0E09D1D844E4D00991DF4 = {
@@ -261,7 +271,7 @@
 		48E0E0A81D844E4D00991DF4 /* TWProjects */ = {
 			isa = PBXGroup;
 			children = (
-				489957A51D8D006300595FA8 /* Custom Components */,
+				489957A51D8D006300595FA8 /* HalfModal */,
 				4857A07C1D8664C2005AC5AC /* Common */,
 				4857A0601D847677005AC5AC /* Libraries */,
 				4857A05F1D845112005AC5AC /* Storyboards */,
@@ -310,6 +320,7 @@
 		48E0E0D81D844E7B00991DF4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				489957AB1D8D67CE00595FA8 /* Common */,
 				48E0E0AB1D844E4D00991DF4 /* TWPLoginViewController.swift */,
 				4857A0781D85D8A7005AC5AC /* TWPDashboardViewController.swift */,
 				4857A07A1D85D8C1005AC5AC /* TWPProjectsViewController.swift */,
@@ -499,6 +510,7 @@
 				4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */,
 				489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */,
 				489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */,
+				489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */,
 				4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */,
 				4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */,
 				4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */,

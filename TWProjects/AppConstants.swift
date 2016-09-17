@@ -21,5 +21,10 @@ struct AppConstants {
     
     struct  SegueIdentifier {
         static let AddProjectSegue = "addProjectSegue"
+        static let DateTimePickerSegue = "dateTimePickerSegue"
+    }
+    
+    struct StoryboardVCIdentifier {
+        static let DateTimePickerVCId = "DateTimePickerVCId"
     }
 }
