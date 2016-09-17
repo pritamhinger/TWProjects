@@ -8,8 +8,10 @@
 
 import UIKit
 
-class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
+class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var customModalTransitioningDelegate: TWPCustomModalTransitioningDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -57,28 +59,14 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presentingViewController: self)
-    }
-    
-    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == AppConstants.SegueIdentifier.DateTimePickerSegue{
             let dateTimePickerVC = self.storyboard?.instantiateViewControllerWithIdentifier(AppConstants.StoryboardVCIdentifier.DateTimePickerVCId) as! TWPDateTimePickerViewController
-            dateTimePickerVC.modalPresentationStyle = UIModalPresentationStyle.Custom
-            dateTimePickerVC.transitioningDelegate = self
-            dateTimePickerVC.view.backgroundColor = UIColor.blueColor()
-            
-            self.presentViewController(dateTimePickerVC, animated: true, completion: nil)
+
+            self.customModalTransitioningDelegate = TWPCustomModalTransitioningDelegate(viewController: self, presentingViewController: dateTimePickerVC)
+            segue.destinationViewController.modalPresentationStyle = .Custom
+            segue.destinationViewController.transitioningDelegate = customModalTransitioningDelegate
         }
-    }
- 
-
-}
-
-class HalfSizePresentationController : UIPresentationController {
-    override func frameOfPresentedViewInContainerView() -> CGRect {
-        return CGRect(x: 0, y: containerView!.bounds.height/2, width: containerView!.bounds.width, height: containerView!.bounds.height/2)
     }
 }

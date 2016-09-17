@@ -395,9 +395,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="0AX-cI-0x5" kind="presentation" identifier="dateTimePickerSegue" id="4yG-ze-Yu2"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -426,6 +423,9 @@
                             <constraint firstItem="QFT-2l-4Yr" firstAttribute="trailing" secondItem="0lT-Tp-AcJ" secondAttribute="trailing" id="yBz-3M-8uu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="0AX-cI-0x5" kind="presentation" identifier="dateTimePickerSegue" id="7WS-WS-HzE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jr-D1-AfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -442,7 +442,37 @@
                     <view key="view" contentMode="scaleToFill" id="vyu-Z5-Guo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJB-ZE-qCq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Today" id="Aok-Af-tVx"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aSX-xJ-GaF"/>
+                                    <barButtonItem enabled="NO" title="Choose a Date" style="done" id="SZj-Yp-nkG"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="OlH-Jf-sUR"/>
+                                    <barButtonItem systemItem="done" id="T4W-dO-iNY">
+                                        <connections>
+                                            <action selector="dateSelected:" destination="0AX-cI-0x5" id="337-e4-e2q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="o5H-r2-geT">
+                                <rect key="frame" x="0.0" y="44" width="600" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="495826490.98157698">
+                                    <!--2016-09-17 17:34:50 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o5H-r2-geT" firstAttribute="top" secondItem="cJB-ZE-qCq" secondAttribute="bottom" id="9AU-5F-51B"/>
+                            <constraint firstItem="o5H-r2-geT" firstAttribute="leading" secondItem="vyu-Z5-Guo" secondAttribute="leadingMargin" constant="-20" id="Ex5-nb-yfI"/>
+                            <constraint firstItem="cJB-ZE-qCq" firstAttribute="leading" secondItem="vyu-Z5-Guo" secondAttribute="leadingMargin" constant="-20" id="NZV-LH-Jdr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cJB-ZE-qCq" secondAttribute="trailing" constant="-20" id="bdH-Xe-kmo"/>
+                            <constraint firstItem="cJB-ZE-qCq" firstAttribute="top" secondItem="ucM-Fs-fro" secondAttribute="bottom" constant="-20" id="foo-sx-w0X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="o5H-r2-geT" secondAttribute="trailing" constant="-20" id="lJd-6W-eHV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hke-bc-8Jc" userLabel="First Responder" sceneMemberID="firstResponder"/>

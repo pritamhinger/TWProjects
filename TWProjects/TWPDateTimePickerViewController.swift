@@ -14,4 +14,11 @@ class TWPDateTimePickerViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    @IBAction func dateSelected(sender: AnyObject) {
+        if let delegate = self.transitioningDelegate as? TWPCustomModalTransitioningDelegate{
+            delegate.interactiveDismiss = false
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
