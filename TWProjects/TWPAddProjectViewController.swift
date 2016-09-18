@@ -10,19 +10,21 @@ import UIKit
 
 class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
 
+    // MARK: - Properties
     var customModalTransitioningDelegate: TWPCustomModalTransitioningDelegate?
     var chosenIndexPath:NSIndexPath?
     var startDate:String?
     var endDate:String?
     var companyId:String?
     var tags:String?
-    
     var project:Project?
     
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var projectTitle: UITextField!
     @IBOutlet weak var projectDescTextView: UITextView!
     
+    // MARK: - View Controller Life Cycle Events
     override func viewDidLoad() {
         super.viewDidLoad()
         projectTitle.delegate = self
@@ -53,6 +55,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AppConstants.NotificationName.DateChosenNotification, object: nil)
     }
     
+    // MARK: - IBActions
     @IBAction func cancelAddProjectForm(sender: UIBarButtonItem) {
         view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
