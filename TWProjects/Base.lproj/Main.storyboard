@@ -94,6 +94,7 @@
                         <segue destination="NOi-mC-bBc" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="MtS-a6-xca"/>
                         <segue destination="qO2-ft-uyq" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="rlF-Uq-AXZ"/>
                         <segue destination="bsJ-XV-xAZ" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="RuR-ee-h81"/>
+                        <segue destination="IS6-X5-18q" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="WlI-MM-Kph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqw-bx-ty8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,6 +170,28 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="bsJ-XV-xAZ" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="7NJ-Rb-Bdt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pYx-Fl-fcx">
+                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pYx-Fl-fcx" id="EHd-hb-uFi">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LatestActivity" translatesAutoresizingMaskIntoConstraints="NO" id="PhF-yH-wlx">
+                                                    <rect key="frame" x="23" y="11" width="22" height="22"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Latest Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-My-rzf">
+                                                    <rect key="frame" x="60" y="11" width="532" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" red="0.41568627450000001" green="0.48627450979999998" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IS6-X5-18q" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="wum-SL-AkF"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -314,6 +337,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5R-R8-w0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4681" y="516"/>
+        </scene>
+        <!--Latest Activity View Controller-->
+        <scene sceneID="W05-pY-Swv">
+            <objects>
+                <tableViewController id="s42-ng-BvZ" customClass="TWPLatestActivityViewController" customModule="TWProjects" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KFP-Ff-lCA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hhg-ZW-baN">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hhg-ZW-baN" id="yFs-tY-f5M">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="s42-ng-BvZ" id="5IY-To-l4x"/>
+                            <outlet property="delegate" destination="s42-ng-BvZ" id="EAi-Ji-VAN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="050-zj-QIj">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="DZb-0X-jMy"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuBarButton" destination="DZb-0X-jMy" id="tmq-3C-ZJs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jWz-Ts-GIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4681" y="1299"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m1C-ux-JeO">
+            <objects>
+                <navigationController id="IS6-X5-18q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EgZ-Q5-Im7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="s42-ng-BvZ" kind="relationship" relationship="rootViewController" id="3Pg-rD-gHM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkC-Nv-ygM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3895" y="1299"/>
         </scene>
         <!--Add Project View Controller-->
         <scene sceneID="cLP-57-WZP">
@@ -525,6 +598,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LatestActivity" width="100" height="100"/>
         <image name="Unstarred" width="32" height="32"/>
         <image name="dashboard_filled" width="100" height="100"/>
         <image name="dossier_folder" width="104" height="104"/>
@@ -532,7 +606,8 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q3d-6u-Jt7"/>
-        <segue reference="7NJ-Rb-Bdt"/>
+        <segue reference="rlF-Uq-AXZ"/>
+        <segue reference="RuR-ee-h81"/>
+        <segue reference="WlI-MM-Kph"/>
     </inferredMetricsTieBreakers>
 </document>
