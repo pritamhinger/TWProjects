@@ -18,6 +18,23 @@ struct CommonFunctions {
         controller.presentViewController(alertViewController, animated: true, completion: nil)
     }
     
+    static func showError(controller:UIViewController, error:NSError?, userInfoKey: String, title:String, style:UIAlertControllerStyle){
+        
+        var errorMessage:String?
+        if let errorData = error?.userInfo{
+            errorMessage = errorData[userInfoKey] as? String
+        }
+        
+        if errorMessage == nil || errorMessage == ""{
+            errorMessage = "Something went wrong. Please try again"
+        }
+        
+        let alertViewController = UIAlertController(title: title, message: errorMessage!, preferredStyle: style)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alertViewController.addAction(okAction)
+        controller.presentViewController(alertViewController, animated: true, completion: nil)
+    }
+    
     static func addToUserDefault(key: String, value:AnyObject){
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(value, forKey: key)

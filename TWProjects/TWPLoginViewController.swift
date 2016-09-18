@@ -57,17 +57,21 @@ class TWPLoginViewController: UIViewController, UITextFieldDelegate {
                                     }
                                     
                                     performUIUpdatesOnMainQueue{
+                                        hudAuthorization.hideAnimated(true)
                                         self.performSegueWithIdentifier("AppSegue", sender: nil)
                                         CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.AuthorizationCookie, value: authenticationHeader)
                                     }
                                 }
                                 else{
                                     print(error)
+                                    
+                                    performUIUpdatesOnMainQueue{
+                                        hudAuthorization.hideAnimated(true)
+                                        CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                                    }
+                                    
                                 }
                                 
-                                performUIUpdatesOnMainQueue{
-                                    hudAuthorization.hideAnimated(true)
-                                }
                             }
                         }
                     }
@@ -75,6 +79,11 @@ class TWPLoginViewController: UIViewController, UITextFieldDelegate {
             }
             else{
                 print(error)
+                
+                performUIUpdatesOnMainQueue{
+                    hud.hideAnimated(true)
+                    CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                }
             }
         }
     }

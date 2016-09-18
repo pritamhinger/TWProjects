@@ -20,6 +20,16 @@ struct AppConstants {
         static let LatestActivityCell = "latestActivityCell"
     }
     
+    struct  ErrorKeys {
+        static let ErrorDescription = "NSLocalizedDescription"
+    }
+    
+    struct AlertViewTitle {
+        static let Error = "Error"
+        static let NetworkError = "Network Error"
+        static let UnknownError = "Unknown Error"
+    }
+    
     struct  SegueIdentifier {
         static let AddProjectSegue = "addProjectSegue"
         static let DateTimePickerSegue = "dateTimePickerSegue"
