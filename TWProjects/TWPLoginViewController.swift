@@ -8,13 +8,16 @@
 
 import UIKit
 
-class TWPLoginViewController: UIViewController {
+class TWPLoginViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var apiKeyTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TWPLoginViewController.tap(_:)))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        apiKeyTextField.delegate = self
     }
 
     @IBAction func login(sender: UIButton) {
@@ -22,6 +25,8 @@ class TWPLoginViewController: UIViewController {
         if apiKeyTextField.text?.characters.count == 0 {
             return
         }
+        
+        view.endEditing(true)
         
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.label.text = "Authenticating"
@@ -72,6 +77,17 @@ class TWPLoginViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    // MARK: - Gesture Event
+    func tap(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    // MARK: - UITextField Delegate Methods
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

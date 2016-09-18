@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
 
     var customModalTransitioningDelegate: TWPCustomModalTransitioningDelegate?
     var chosenIndexPath:NSIndexPath?
@@ -16,9 +16,13 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     var endDate:NSDate?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var projectTitle: UITextField!
+    @IBOutlet weak var projectDescTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        projectTitle.delegate = self
+        projectDescTextView.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -32,6 +36,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func cancelAddProjectForm(sender: UIBarButtonItem) {
+        view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -48,5 +53,21 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
             segue.destinationViewController.modalPresentationStyle = .Custom
             segue.destinationViewController.transitioningDelegate = customModalTransitioningDelegate
         }
+    }
+    
+    // MARK: - UITextField Delegate Methods
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: - UITextView Delegate Methods
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
     }
 }
