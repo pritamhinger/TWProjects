@@ -68,4 +68,38 @@ struct CommonFunctions {
         
         return nil
     }
+    
+    static func getFormattedDateForUI(date:NSDate) -> String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .FullStyle
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    static func getFormattedDateForAPI(dateString:String) -> String{
+        if dateString == ""{
+            return ""
+        }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .FullStyle
+        let date = dateFormatter.dateFromString(dateString)
+        dateFormatter.dateFormat = AppConstants.DateFormats.PassedToAPI
+        return dateFormatter.stringFromDate(date!)
+    }
+    
+    static func convertDictionaryToString(dictionary:[String:AnyObject]) -> String{
+        var json = ""
+        for(key, value) in dictionary{
+            json = "\(json)\"\(key)\":\"\(value)\","
+        }
+        
+        let length = json.characters.count
+        if( length > 0){
+            json = json.substringToIndex(json.endIndex.predecessor())
+        }
+        
+        return json
+    }
+    
+    
 }

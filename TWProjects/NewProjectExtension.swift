@@ -23,6 +23,17 @@ extension TWPAddProjectViewController{
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Company: "
+            if let companyNames = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.CompanyNames) as? [String]{
+                cell.detailTextLabel?.text = companyNames.first!
+            }
+            
+            if let companyIds = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.CompanyIds) as? [String]{
+                companyId = companyIds.first
+            }
+            else{
+                companyId = ""
+            }
+            
         case 1:
             cell.textLabel?.text = "Tags: "
             cell.detailTextLabel?.text = "Not Tagged"
@@ -59,10 +70,10 @@ extension TWPAddProjectViewController{
         if let data = notification.userInfo{
             switch (chosenIndexPath?.row)! {
             case 3:
-                startDate = data["ChosenDate"] as? NSDate
+                startDate = CommonFunctions.getFormattedDateForUI((data[AppConstants.NotificatioPayloadKeys.ChosenDate] as? NSDate)!)
                 break
             case 4:
-                endDate = data["ChosenDate"] as? NSDate
+                endDate = CommonFunctions.getFormattedDateForUI((data[AppConstants.NotificatioPayloadKeys.ChosenDate] as? NSDate)!)
                 break
             default:
                 break

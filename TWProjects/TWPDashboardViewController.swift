@@ -54,11 +54,13 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
                                 }
                                 
                                 print(companiesDAO)
-                                
+                                var companyNames = [String]()
                                 for comp in companiesDAO{
+                                    companyNames.append(comp.name!)
                                     if !self.companyIDsStoredInDB.contains(comp.id!){
                                         let company = Company(companyDAO: comp, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
                                         print("Saving Company \n \(company) ")
+                                        self.companyIDsStoredInDB.append(comp.id!)
                                     }
                                     else{
                                         // TODO: Sync Company Data as passed from Server with the Company data stored in Persistent Store
@@ -66,6 +68,8 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
                                     }
                                 }
                                 
+                                CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.CompanyIds, value: self.companyIDsStoredInDB)
+                                CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.CompanyNames, value: companyNames)
                                 (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack.save()
                             }
                         }

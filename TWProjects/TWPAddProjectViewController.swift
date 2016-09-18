@@ -12,8 +12,10 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
 
     var customModalTransitioningDelegate: TWPCustomModalTransitioningDelegate?
     var chosenIndexPath:NSIndexPath?
-    var startDate:NSDate?
-    var endDate:NSDate?
+    var startDate:String?
+    var endDate:String?
+    var companyId:String?
+    var tags:String?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var projectTitle: UITextField!
@@ -41,7 +43,73 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func saveProject(sender: UIBarButtonItem) {
+        if projectTitle.text?.characters.count == 0{
+            CommonFunctions.showError(self, message: "Project should a title", title: AppConstants.AlertViewTitle.MoreInformationNeeded, style: .Alert)
+            return;
+        }
         
+        if projectDescTextView.text.characters.count == 0{
+            CommonFunctions.showError(self, message: "Project description is required", title: AppConstants.AlertViewTitle.MoreInformationNeeded, style: .Alert)
+            return;
+        }
+        
+        var row = 0
+        var postRequestData = [String:AnyObject]()
+        
+        postRequestData[TWProjectsClient.ProjectResponseKeys.Name] = projectTitle.text!
+        postRequestData[TWProjectsClient.ProjectResponseKeys.Description] = projectDescTextView.text
+        while row < 5 {
+            let indexPath = NSIndexPath(forRow: row, inSection: 0)
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            print(cell?.detailTextLabel?.text!)
+            switch row {
+            case 0:
+                postRequestData[TWProjectsClient.ProjectResponseKeys.CompanyId] = companyId!
+                break
+            case 1:
+                postRequestData[TWProjectsClient.ProjectResponseKeys.CategoryId] = "0"
+                break
+            case 2:
+                postRequestData[TWProjectsClient.ProjectResponseKeys.Tags] = ""
+                break
+            case 3:
+                let stDt = CommonFunctions.getFormattedDateForAPI((cell?.detailTextLabel?.text!)!)
+                print(stDt)
+                postRequestData[TWProjectsClient.ProjectResponseKeys.StartDate] = stDt
+                break
+            case 4:
+                let endDt = CommonFunctions.getFormattedDateForAPI((cell?.detailTextLabel?.text!)!)
+                print(endDt)
+                postRequestData[TWProjectsClient.ProjectResponseKeys.EndDate] = endDt
+                break
+            default:
+                break
+                
+            }
+            row = row + 1
+        }
+        
+        var json = CommonFunctions.convertDictionaryToString(postRequestData)
+        json = "{\"\(TWProjectsClient.ProjectResponseKeys.Project)\":{\(json)}}"
+        
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.label.text = "Adding Project"
+        if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
+            let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
+            TWProjectsClient.sharedInstance().insertResourceForMethod(methodName, jsonBody: json, authorizationCookie: authorizationCookie){ (results, error) in
+                if error == nil{
+                    print(results)
+                }
+                else{
+                    print(error)
+                }
+                
+                performUIUpdatesOnMainQueue{
+                    hud.hideAnimated(true)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+        }
     }
     
     // MARK: - Navigation

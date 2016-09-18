@@ -128,6 +128,9 @@ extension TWProjectsClient{
         static let AnnouncementHTML = "announcementHTML"
         static let ResponseStatus = "STATUS"
         static let Projects = "projects"
+        static let CompanyId = "companyId"
+        static let CategoryId = "category-id"
+        static let Project = "project"
     }
     
     struct  AuthenticateResponseKeys {

@@ -133,6 +133,42 @@ class TWProjectsClient: NSObject {
         return task
     }
     
+    func taskForPost(methodName: String, jsonBody:String, authorizationCookie:String = "", urlKey: String = "", id: String = "", completionHandler:(results:AnyObject?, error:NSError?) -> Void) -> NSURLSessionDataTask {
+        let request = NSMutableURLRequest(URL: TWProjectsClient.twAPIUrlForMethod(methodName, id: id, urlKey: urlKey))
+        request.HTTPMethod = TWProjectsClient.HTTPMethod.POST
+        request.addValue("Basic \(authorizationCookie)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
+        print(request.URL?.absoluteString)
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            func sendError(errorString: String) {
+                let userInfo = [NSLocalizedDescriptionKey : errorString]
+                completionHandler(results: nil, error: NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError((error?.localizedDescription)!)
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+        }
+        
+        task.resume()
+        return task
+    }
+    
     // MARK: - Private Methods
     private func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         

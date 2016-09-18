@@ -12,6 +12,8 @@ struct AppConstants {
     struct UserDefaultKeys {
         static let BaseURL = "BaseURL"
         static let AuthorizationCookie = "AuthorizationCookie"
+        static let CompanyIds = "companyIds"
+        static let CompanyNames = "companyNames"
     }
     
     struct CellIdentifier {
@@ -28,6 +30,7 @@ struct AppConstants {
         static let Error = "Error"
         static let NetworkError = "Network Error"
         static let UnknownError = "Unknown Error"
+        static let MoreInformationNeeded = "More Information Needed"
     }
     
     struct  SegueIdentifier {
@@ -41,5 +44,14 @@ struct AppConstants {
     
     struct NotificationName {
         static let DateChosenNotification = "dateChosenNotification"
+    }
+    
+    struct NotificatioPayloadKeys {
+        static let ChosenDate = "ChosenDate"
+    }
+    
+    struct DateFormats {
+        static let ShownOnUI = ""
+        static let PassedToAPI = "yyyyMMdd"
     }
 }
