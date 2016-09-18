@@ -33,6 +33,8 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         tableView.estimatedRowHeight = 60.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        self.navigationItem.title = "All Projects"
+        
         entityName = CoreDataStack.EntityName.Project
         let coreDataStack = (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack
         let fetchRequest = NSFetchRequest(entityName: entityName!)

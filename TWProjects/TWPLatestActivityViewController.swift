@@ -20,6 +20,8 @@ class TWPLatestActivityViewController: UITableViewController {
             menuBarButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        self.navigationItem.title = "Latest Activity"
     }
     
     // MARK: - Table view data source

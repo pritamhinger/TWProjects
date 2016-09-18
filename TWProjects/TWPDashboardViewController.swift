@@ -24,6 +24,8 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        self.navigationItem.title = "Dashboard"
+        
         entityName = CoreDataStack.EntityName.Company
         let coreDataStack = (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack
         let fetchRequest = NSFetchRequest(entityName: entityName!)
