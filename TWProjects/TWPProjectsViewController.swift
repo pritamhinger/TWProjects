@@ -46,6 +46,11 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TWPProjectsViewController.updateUI(_:)), name: AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == AppConstants.SegueIdentifier.EditProjectSegue{

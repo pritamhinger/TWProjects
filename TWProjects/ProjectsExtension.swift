@@ -68,6 +68,7 @@ extension TWPProjectsViewController{
                     if let status = results![TWProjectsClient.ProjectResponseKeys.ResponseStatus] as? String{
                         if status == "OK"{
                             if let projectsJSON = results![TWProjectsClient.ProjectResponseKeys.Projects] as? [[String:AnyObject]]{
+                                
                                 var projectsDAO = [ProjectDAO]()
                                 var projectDAO:ProjectDAO?
                                 for projectJSON in projectsJSON{
@@ -81,6 +82,9 @@ extension TWPProjectsViewController{
                                 for proj in projectsDAO{
                                     if !self.projectIds.contains(proj.id!){
                                         let project = Project(projectDAO: proj, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
+                                        if project.starred == 1{
+                                            self.starredProjects.append(project)
+                                        }
                                         self.projects.append(project)
                                     }
                                     else{
@@ -101,6 +105,9 @@ extension TWPProjectsViewController{
                                 (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack.save()
                                 
                                 performUIUpdatesOnMainQueue{
+                                    self.tableView.reloadData()
+                                    self.tableView.setNeedsLayout()
+                                    self.tableView.layoutIfNeeded()
                                     self.tableView.reloadData()
                                 }
                             }
@@ -136,12 +143,30 @@ extension TWPProjectsViewController{
             return "Starred Projects"
         }
         
-        return "AppDevelapp"
+        return (CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.CompanyNames) as? [String])?.first
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if starredProjects.count > 0 && section == 0{
             return starredProjects.count
+        }
+        
+        if projects.count == 0{
+            let frame:CGRect = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+            
+            let emptyLabel:UILabel = UILabel(frame: frame);
+            emptyLabel.text = "No projects yet. Click '+' at the top right corner and get started."
+            emptyLabel.textColor = UIColor.blackColor();
+            emptyLabel.numberOfLines = 0;
+            emptyLabel.textAlignment = NSTextAlignment.Center;
+            let font:UIFont = UIFont(name: "AvenirNext-MediumItalic", size: 20)!
+            emptyLabel.font = font;
+            emptyLabel.sizeToFit();
+            self.tableView.backgroundView = emptyLabel;
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+        }
+        else{
+            self.tableView.backgroundView = nil
         }
         
         return projects.count
