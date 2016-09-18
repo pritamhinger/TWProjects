@@ -22,6 +22,6 @@ extension CoreDataStack{
     
     struct Constants {
         static let DelaysInSeconds = 15
-        static let DropData = true
+        static let DropData = false
     }
 }
