@@ -126,6 +126,11 @@ extension TWPProjectsViewController{
         return 1
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? TWPProjectsTableViewCell
+        cell?.selected = false
+    }
+    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if starredProjects.count > 0 && section == 0{
             return "Starred Projects"
@@ -171,5 +176,11 @@ extension TWPProjectsViewController{
         cell.projectDesc.text = project!.desc!
         cell.projectName.text = project!.name!
         return cell
+    }
+}
+
+extension TWPProjectsViewController{
+    func updateUI(notification: NSNotification){
+        syncProjectsFromTWServer()
     }
 }

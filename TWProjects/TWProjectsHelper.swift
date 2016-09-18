@@ -34,8 +34,8 @@ extension TWProjectsClient{
         }
     }
     
-    func updateResourceForMethod(methodName:String, urlKey: String = "", id: String = "", authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
-        TWProjectsClient.sharedInstance().taskForPut(methodName, authorizationCookie: authorizationCookie, urlKey: urlKey, id: id){ (results, error) in
+    func updateResourceForMethod(methodName:String, urlKey: String = "", id: String = "", jsonBody: String = "", authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
+        TWProjectsClient.sharedInstance().taskForPut(methodName, authorizationCookie: authorizationCookie, jsonBody: jsonBody, urlKey: urlKey, id: id){ (results, error) in
             if error == nil{
                 completionHandler(results: results, error: nil)
             }

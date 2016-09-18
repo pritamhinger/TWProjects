@@ -72,7 +72,14 @@ class TWProjectsClient: NSObject {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             func sendError(errorString: String) {
                 let userInfo = [NSLocalizedDescriptionKey : errorString]
-                completionHandler(results: nil, error: NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo))
+                var err:NSError?
+                if error != nil{
+                    err = NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo)
+                }
+                else{
+                    err = NSError(domain: "", code: 0, userInfo: userInfo)
+                }
+                completionHandler(results: nil, error: err)
             }
             
             guard (error == nil) else {
@@ -80,13 +87,13 @@ class TWProjectsClient: NSObject {
                 return
             }
             
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+            guard let data = data else {
+                sendError("No data was returned by the request!")
                 return
             }
             
-            guard let data = data else {
-                sendError("No data was returned by the request!")
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
@@ -97,18 +104,29 @@ class TWProjectsClient: NSObject {
         return task
     }
     
-    func taskForPut(methodName: String, authorizationCookie:String = "", urlKey: String = "", id: String = "", completionHandler:(results:AnyObject?, error:NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForPut(methodName: String, authorizationCookie:String = "", jsonBody: String = "", urlKey: String = "", id: String = "", completionHandler:(results:AnyObject?, error:NSError?) -> Void) -> NSURLSessionDataTask {
         let request = NSMutableURLRequest(URL: TWProjectsClient.twAPIUrlForMethod(methodName, id: id, urlKey: urlKey))
         request.HTTPMethod = TWProjectsClient.HTTPMethod.PUT
         request.addValue("Basic \(authorizationCookie)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("no-cache", forHTTPHeaderField: "Cache-Control")
-        print(request.URL?.absoluteString)
+        
+        if jsonBody != ""{
+            request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
+        }
+        
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             func sendError(errorString: String) {
                 let userInfo = [NSLocalizedDescriptionKey : errorString]
-                completionHandler(results: nil, error: NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo))
+                var err:NSError?
+                if error != nil{
+                    err = NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo)
+                }
+                else{
+                    err = NSError(domain: "", code: 0, userInfo: userInfo)
+                }
+                completionHandler(results: nil, error: err)
             }
             
             guard (error == nil) else {
@@ -116,13 +134,13 @@ class TWProjectsClient: NSObject {
                 return
             }
             
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+            guard let data = data else {
+                sendError("No data was returned by the request!")
                 return
             }
             
-            guard let data = data else {
-                sendError("No data was returned by the request!")
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
@@ -144,7 +162,14 @@ class TWProjectsClient: NSObject {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             func sendError(errorString: String) {
                 let userInfo = [NSLocalizedDescriptionKey : errorString]
-                completionHandler(results: nil, error: NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo))
+                var err:NSError?
+                if error != nil{
+                    err = NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo)
+                }
+                else{
+                    err = NSError(domain: "", code: 0, userInfo: userInfo)
+                }
+                completionHandler(results: nil, error: err)
             }
             
             guard (error == nil) else {
@@ -152,13 +177,14 @@ class TWProjectsClient: NSObject {
                 return
             }
             
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
-                return
-            }
             
             guard let data = data else {
                 sendError("No data was returned by the request!")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
                 return
             }
             

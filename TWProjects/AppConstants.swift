@@ -35,15 +35,18 @@ struct AppConstants {
     
     struct  SegueIdentifier {
         static let AddProjectSegue = "addProjectSegue"
+        static let EditProjectSegue = "editProjectSegue"
         static let DateTimePickerSegue = "dateTimePickerSegue"
     }
     
     struct StoryboardVCIdentifier {
         static let DateTimePickerVCId = "DateTimePickerVCId"
+        static let ProjectDetailVCId = "projectDetailVCId"
     }
     
     struct NotificationName {
         static let DateChosenNotification = "dateChosenNotification"
+        static let DataSaveSuccessNotification = "dataSaveSuccessNotification"
     }
     
     struct NotificatioPayloadKeys {

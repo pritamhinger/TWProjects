@@ -38,5 +38,6 @@ extension TWProjectsClient{
         static let Projects = "projects"
         static let StarProject = "projects/{project_id}/star.json"
         static let UnstarProject = "/projects/{project_id}/unstar.json"
+        static let UpdateProject = "projects/{project_id}.json"
     }
 }

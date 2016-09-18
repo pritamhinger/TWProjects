@@ -17,6 +17,8 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     var companyId:String?
     var tags:String?
     
+    var project:Project?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var projectTitle: UITextField!
     @IBOutlet weak var projectDescTextView: UITextView!
@@ -25,6 +27,20 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         projectTitle.delegate = self
         projectDescTextView.delegate = self
+        
+        if project != nil{
+            projectTitle.text = project?.name
+            projectDescTextView.text = project?.desc
+            if let stDate = project?.startDate{
+                startDate = CommonFunctions.getFormattedDateForUI(stDate)
+                print("Start Date \(startDate!)")
+            }
+            
+            if let edDate = project?.endDate{
+                endDate = CommonFunctions.getFormattedDateForUI(edDate)
+                print("End Date \(endDate!)")
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,7 +60,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func saveProject(sender: UIBarButtonItem) {
         if projectTitle.text?.characters.count == 0{
-            CommonFunctions.showError(self, message: "Project should a title", title: AppConstants.AlertViewTitle.MoreInformationNeeded, style: .Alert)
+            CommonFunctions.showError(self, message: "Project should have a title", title: AppConstants.AlertViewTitle.MoreInformationNeeded, style: .Alert)
             return;
         }
         
@@ -61,7 +77,6 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         while row < 5 {
             let indexPath = NSIndexPath(forRow: row, inSection: 0)
             let cell = tableView.cellForRowAtIndexPath(indexPath)
-            print(cell?.detailTextLabel?.text!)
             switch row {
             case 0:
                 postRequestData[TWProjectsClient.ProjectResponseKeys.CompanyId] = companyId!
@@ -95,18 +110,37 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.label.text = "Adding Project"
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
-            let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
-            TWProjectsClient.sharedInstance().insertResourceForMethod(methodName, jsonBody: json, authorizationCookie: authorizationCookie){ (results, error) in
-                if error == nil{
-                    print(results)
+            if project != nil{
+                TWProjectsClient.sharedInstance().updateResourceForMethod(TWProjectsClient.APIMethod.UpdateProject, urlKey: TWProjectsClient.URLKeys.ProjectId, id: (project?.id!)!, jsonBody: json,  authorizationCookie: authorizationCookie){ (results, error) in
+                    if error == nil{
+                        print(results)
+                        NSNotificationCenter.defaultCenter().postNotificationName(AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
+                    }
+                    else{
+                        print(error)
+                    }
+                    
+                    performUIUpdatesOnMainQueue{
+                        hud.hideAnimated(true)
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
                 }
-                else{
-                    print(error)
-                }
-                
-                performUIUpdatesOnMainQueue{
-                    hud.hideAnimated(true)
-                    self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            else{
+                let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
+                TWProjectsClient.sharedInstance().insertResourceForMethod(methodName, jsonBody: json, authorizationCookie: authorizationCookie){ (results, error) in
+                    if error == nil{
+                        print(results)
+                        NSNotificationCenter.defaultCenter().postNotificationName(AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
+                    }
+                    else{
+                        print(error)
+                    }
+                    
+                    performUIUpdatesOnMainQueue{
+                        hud.hideAnimated(true)
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
                 }
             }
         }

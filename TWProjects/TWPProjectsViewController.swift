@@ -24,7 +24,6 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
     // MARK: - Controller Life Cycle Events
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if self.revealViewController() != nil {
             menuBarButton.target = self.revealViewController()
             menuBarButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -43,6 +42,23 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         
         loadProjectsFromStore()
         syncProjectsFromTWServer()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TWPProjectsViewController.updateUI(_:)), name: AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
+    }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == AppConstants.SegueIdentifier.EditProjectSegue{
+            
+            if let cell = sender as? TWPProjectsTableViewCell{
+                let projectDetailViewController = segue.destinationViewController as! TWPAddProjectViewController
+                let projectId = cell.projectStarredImageView.tag
+                print(projectId)
+                let project = self.projects.filter{ $0.id! == "\(projectId)" }.first
+                projectDetailViewController.project = project
+            }
+            
+        }
     }
     
     // MARK: - Image Tap Gesture Handler
