@@ -9,7 +9,7 @@
 import UIKit
 
 class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
-
+    
     // MARK: - Properties
     var customModalTransitioningDelegate: TWPCustomModalTransitioningDelegate?
     var chosenIndexPath:NSIndexPath?
@@ -120,27 +120,27 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         var json = CommonFunctions.convertDictionaryToString(postRequestData)
         json = "{\"\(TWProjectsClient.ProjectResponseKeys.Project)\":{\(json)}}"
         
-        //let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        //hud.label.text = "Adding Project"
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.label.text = "Adding Project"
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             if project != nil{
                 TWProjectsClient.sharedInstance().updateResourceForMethod(TWProjectsClient.APIMethod.UpdateProject, urlKey: TWProjectsClient.URLKeys.ProjectId, id: (project?.id!)!, jsonBody: json,  authorizationCookie: authorizationCookie){ (results, error) in
                     if error == nil{
                         print(results)
                         NSNotificationCenter.defaultCenter().postNotificationName(AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else{
                         print(error)
                         performUIUpdatesOnMainQueue{
-                            //hud.hideAnimated(true)
+                            hud.hideAnimated(true)
                             CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .ActionSheet)
                             return
                         }
                     }
                     
                     performUIUpdatesOnMainQueue{
-                        //hud.hideAnimated(true)
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        hud.hideAnimated(true)
                     }
                 }
             }
@@ -150,19 +150,19 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
                     if error == nil{
                         print(results)
                         NSNotificationCenter.defaultCenter().postNotificationName(AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     else{
                         print(error)
                         performUIUpdatesOnMainQueue{
-                            //hud.hideAnimated(true)
+                            hud.hideAnimated(true)
                             CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .ActionSheet)
                             return
                         }
                     }
                     
                     performUIUpdatesOnMainQueue{
-                        //hud.hideAnimated(true)
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        hud.hideAnimated(true)
                     }
                 }
             }
@@ -173,7 +173,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == AppConstants.SegueIdentifier.DateTimePickerSegue{
             let dateTimePickerVC = self.storyboard?.instantiateViewControllerWithIdentifier(AppConstants.StoryboardVCIdentifier.DateTimePickerVCId) as! TWPDateTimePickerViewController
-
+            
             self.customModalTransitioningDelegate = TWPCustomModalTransitioningDelegate(viewController: self, presentingViewController: dateTimePickerVC)
             segue.destinationViewController.modalPresentationStyle = .Custom
             segue.destinationViewController.transitioningDelegate = customModalTransitioningDelegate

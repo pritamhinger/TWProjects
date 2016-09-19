@@ -778,27 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TWProjects/TWPAddProjectViewController.swift"
-            timestampString = "495989439.050131"
+            timestampString = "495997011.453197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "saveProject(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TWProjects/TWPAddProjectViewController.swift"
-            timestampString = "495989439.050131"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "saveProject(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -817,6 +801,54 @@
             endingLineNumber = "35"
             landmarkName = "showError(_:error:userInfoKey:title:style:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TWProjects/CommonFunctions.swift"
+            timestampString = "495994353.687697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "showError(_:error:userInfoKey:title:style:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TWProjects.CommonFunctions.showError (__ObjC.UIViewController, error : Swift.Optional&lt;__ObjC.NSError&gt;, userInfoKey : Swift.String, title : Swift.String, style : __C.UIAlertControllerStyle) -&gt; ()"
+                  moduleName = "TWProjects"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pritamhinger/AppDevelapp/ProdCode/iOS/TeamworkProjects/TWProjects/TWProjects/CommonFunctions.swift"
+                  timestampString = "495994555.744407"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "157">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TWProjects.CommonFunctions.showError (__ObjC.UIViewController, error : Swift.Optional&lt;__ObjC.NSError&gt;, userInfoKey : Swift.String, title : Swift.String, style : __C.UIAlertControllerStyle) -&gt; ()"
+                  moduleName = "TWProjects"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pritamhinger/AppDevelapp/ProdCode/iOS/TeamworkProjects/TWProjects/TWProjects/CommonFunctions.swift"
+                  timestampString = "495994555.744605"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "434">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
