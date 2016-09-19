@@ -82,6 +82,8 @@ extension TWPProjectsViewController{
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             
             let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authorizationCookie){ (results, error) in
                 
                 if error == nil{
@@ -162,7 +164,13 @@ extension TWPProjectsViewController{
                 }
                 else{
                     print(error)
+                    performUIUpdatesOnMainQueue{
+                        CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                        self.tableView.reloadData()
+                    }
                 }
+                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
             }
         }

@@ -87,13 +87,19 @@ struct CommonFunctions {
         return dateFormatter.stringFromDate(date!)
     }
     
-    static func getDateFromString(dateString:String) -> NSDate?{
+    static func getDateFromString(dateString:String, fullFormat isFullFormat:Bool = false) -> NSDate?{
         if dateString == ""{
             return nil
         }
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = AppConstants.DateFormats.PassedToAPI
+        if !isFullFormat{
+            dateFormatter.dateFormat = AppConstants.DateFormats.PassedToAPI
+        }
+        else{
+            dateFormatter.dateStyle = .FullStyle
+        }
+        
         return dateFormatter.dateFromString(dateString)
     }
     

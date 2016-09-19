@@ -132,7 +132,9 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
             }
             else{
                 print(error)
-                CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                performUIUpdatesOnMainQueue{
+                    CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                }
             }
             
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false

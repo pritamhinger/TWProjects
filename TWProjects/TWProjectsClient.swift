@@ -35,7 +35,14 @@ class TWProjectsClient: NSObject {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             func sendError(errorString: String) {
                 let userInfo = [NSLocalizedDescriptionKey : errorString]
-                completionHandler(result: nil, error: NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo))
+                var err:NSError?
+                if error != nil{
+                    err = NSError(domain: (error?.domain)!, code: (error?.code)!, userInfo: userInfo)
+                }
+                else{
+                    err = NSError(domain: "", code: 0, userInfo: userInfo)
+                }
+                completionHandler(result: nil, error: err)
             }
             
             guard (error == nil) else {
@@ -43,13 +50,13 @@ class TWProjectsClient: NSObject {
                 return
             }
             
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+            guard let data = data else {
+                sendError("No data was returned by the request!")
                 return
             }
             
-            guard let data = data else {
-                sendError("No data was returned by the request!")
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Login Failed. Please try again")
                 return
             }
             

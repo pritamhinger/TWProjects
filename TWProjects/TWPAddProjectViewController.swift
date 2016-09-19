@@ -72,6 +72,16 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
             return;
         }
         
+        if startDate != nil && endDate != nil{
+            let stDate = CommonFunctions.getDateFromString(startDate!, fullFormat: true)
+            let enDate = CommonFunctions.getDateFromString(endDate!, fullFormat: true)
+            
+            if enDate?.compare(stDate!) == NSComparisonResult.OrderedAscending{
+                CommonFunctions.showError(self, message: "End Date has to be more than or equal to start Date", title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                return
+            }
+        }
+        
         var row = 0
         var postRequestData = [String:AnyObject]()
         
@@ -110,8 +120,8 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         var json = CommonFunctions.convertDictionaryToString(postRequestData)
         json = "{\"\(TWProjectsClient.ProjectResponseKeys.Project)\":{\(json)}}"
         
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.label.text = "Adding Project"
+        //let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        //hud.label.text = "Adding Project"
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             if project != nil{
                 TWProjectsClient.sharedInstance().updateResourceForMethod(TWProjectsClient.APIMethod.UpdateProject, urlKey: TWProjectsClient.URLKeys.ProjectId, id: (project?.id!)!, jsonBody: json,  authorizationCookie: authorizationCookie){ (results, error) in
@@ -121,10 +131,15 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     else{
                         print(error)
+                        performUIUpdatesOnMainQueue{
+                            //hud.hideAnimated(true)
+                            CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .ActionSheet)
+                            return
+                        }
                     }
                     
                     performUIUpdatesOnMainQueue{
-                        hud.hideAnimated(true)
+                        //hud.hideAnimated(true)
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                 }
@@ -138,10 +153,15 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     else{
                         print(error)
+                        performUIUpdatesOnMainQueue{
+                            //hud.hideAnimated(true)
+                            CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .ActionSheet)
+                            return
+                        }
                     }
                     
                     performUIUpdatesOnMainQueue{
-                        hud.hideAnimated(true)
+                        //hud.hideAnimated(true)
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                 }
