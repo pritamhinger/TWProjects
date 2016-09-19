@@ -83,6 +83,7 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
                 // Based on ProjectId retrieved from Cell, we would be filtering our datasource 
                 // object, projects collection, and getting appropriate Project Reference
                 let project = self.projects.filter{ $0.id! == "\(projectId)" }.first
+                print(project)
                 projectDetailViewController.project = project
             }
             
@@ -119,6 +120,7 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
             resourcePath = TWProjectsClient.APIMethod.StarProject
         }
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         // Making PUT call to resource path as set above
         TWProjectsClient.sharedInstance().updateResourceForMethod(resourcePath, urlKey: TWProjectsClient.URLKeys.ProjectId, id: "\(projectId)", authorizationCookie: ""){ (results, error) in
             if error == nil{
@@ -129,8 +131,11 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
                 }
             }
             else{
-                print("Resource Update failed")
+                print(error)
+                CommonFunctions.showError(self, error: error, userInfoKey: AppConstants.ErrorKeys.ErrorDescription, title: AppConstants.AlertViewTitle.Error, style: .Alert)
             }
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
 }

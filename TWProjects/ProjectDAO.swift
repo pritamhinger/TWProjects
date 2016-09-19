@@ -46,11 +46,11 @@ struct ProjectDAO {
         self.filesAutoNewVersion = userDictionary[TWProjectsClient.ProjectResponseKeys.FilesAutoNewVersion] as? Bool
         self.tags = userDictionary[TWProjectsClient.ProjectResponseKeys.Tags] as? String
         self.logo = userDictionary[TWProjectsClient.ProjectResponseKeys.Logo] as? String
-        self.startDate = userDictionary[TWProjectsClient.ProjectResponseKeys.StartDate] as? NSDate
+        self.startDate = CommonFunctions.getDateFromString(userDictionary[TWProjectsClient.ProjectResponseKeys.StartDate] as! String)
         self.id = userDictionary[TWProjectsClient.ProjectResponseKeys.Id] as? String
         self.lastChangedOn = userDictionary[TWProjectsClient.ProjectResponseKeys.LastChangedOn] as? NSDate
         self.name = userDictionary[TWProjectsClient.ProjectResponseKeys.Name] as? String
-        self.endDate = userDictionary[TWProjectsClient.ProjectResponseKeys.EndDate] as? NSDate
+        self.endDate = CommonFunctions.getDateFromString(userDictionary[TWProjectsClient.ProjectResponseKeys.EndDate] as! String)
         self.privacyEnabled = userDictionary[TWProjectsClient.ProjectResponseKeys.PrivacyEnabled] as? Bool
         self.desc = userDictionary[TWProjectsClient.ProjectResponseKeys.Description] as? String
         self.announcement = userDictionary[TWProjectsClient.ProjectResponseKeys.Announcement] as? String

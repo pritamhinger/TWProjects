@@ -85,6 +85,7 @@ extension TWPProjectsViewController{
             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authorizationCookie){ (results, error) in
                 
                 if error == nil{
+                    print(results)
                     if let status = results![TWProjectsClient.ProjectResponseKeys.ResponseStatus] as? String{
                         if status == "OK"{
                             if let projectsJSON = results![TWProjectsClient.ProjectResponseKeys.Projects] as? [[String:AnyObject]]{
@@ -278,6 +279,11 @@ extension TWPProjectsViewController{
 extension TWPProjectsViewController{
     // Below is the Notification Reciever when a new project is added or an existing project is successfully edited
     func updateUI(notification: NSNotification){
+        
+        // Clearing DataSource as we would be reloading projects again from persistent store
+        self.projects.removeAll()
+        self.starredProjects.removeAll()
+        loadProjectsFromStore()
         // Calling procedure to sync data from Teamwork servers
         syncProjectsFromTWServer()
     }

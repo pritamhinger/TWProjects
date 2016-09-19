@@ -87,6 +87,16 @@ struct CommonFunctions {
         return dateFormatter.stringFromDate(date!)
     }
     
+    static func getDateFromString(dateString:String) -> NSDate?{
+        if dateString == ""{
+            return nil
+        }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = AppConstants.DateFormats.PassedToAPI
+        return dateFormatter.dateFromString(dateString)
+    }
+    
     static func convertDictionaryToString(dictionary:[String:AnyObject]) -> String{
         var json = ""
         for(key, value) in dictionary{

@@ -46,6 +46,7 @@ extension TWProjectsClient{
     }
     
     func insertResourceForMethod(methodName:String, jsonBody:String, urlKey: String = "", id: String = "", authorizationCookie: String, completionHandler: (results:AnyObject?, error: NSError?) -> Void){
+        print(jsonBody)
         TWProjectsClient.sharedInstance().taskForPost(methodName, jsonBody:jsonBody, authorizationCookie: authorizationCookie, urlKey: urlKey, id: id){ (results, error) in
             if error == nil{
                 completionHandler(results: results, error: nil)
