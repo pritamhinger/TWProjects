@@ -38,13 +38,14 @@ For purpose of testing this app, i have created a test user. To login into the a
 ## Features
 1. Login: To Authenticate and authorize User to use the app
 2. On Successful Login, Dashboard View Controller is shown. For purpose of submission, Dashboard feature is not implemented
-3. The other two menus are, Projects and Latest Activity. This Submission stresses only on Projects Menus.
+3. The other two menus are, Projects and Latest Activity. This Submission stresses only on Projects Menus. Thus Dashboard and Latest Activity is not implemented for purposes of Submission. Added these Dashboard and Latest Activity to populate Slide In Menu.
 4. On Selecting Project Menu, it first load projects from Persistent Store and meanwhile gets Projects from Teamwork servers. Sync persistent Store data with data recieved from Get Call. Update Persistent Store and Update new Data over UI.
 5. A project Can be Starred and Unstarred by clicking on the star. A single Tap toggle the state of Star and thereby state of Project. Another single Tap restore the original state of Project
 6. Table View show two groups, Starred Projects (only visible if there at least one Starred project) and `Company_Name` Projects (projects owned by company)
-7. User can also create a new Project by clicking on the '+' at the top right corner of the screen. This would present a Modal View Controller to create a new Project.
-8. Selecting a project in project list would open up project for Editing. View Controller has been reused for both New Project Creation as well as Editing existing project.
-9. On View Controller to create a new Project, select the Start Date and End Date row to open up custom modal view controller which takes up only half of screen height. 
+7. User can also create a new Project by clicking on the '+' at the top right corner of the screen. This would present a Modal View Controller to create a new Project. 
+8. The new View Controller provide UI Control to set Project properties like Title, description, Tags, Category, Start Date and End Date. However for purpose of Submission we are not considering Tags and Category as Teamwork provide separate APIs to fetch available Categories and Tags
+9. Selecting a project in project list would open up project for Editing. View Controller has been reused for both New Project Creation as well as Editing existing project.
+10. On View Controller to create a new Project, select the Start Date and End Date row to open up custom modal view controller which takes up only half of screen height. 
 
 ## License
 
