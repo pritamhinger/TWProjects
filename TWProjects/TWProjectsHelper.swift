@@ -15,6 +15,7 @@ extension TWProjectsClient{
     func getBaseURL(authorizationString: String, completionHandler: (results:AnyObject?, error:NSError?) -> Void) {
         TWProjectsClient.sharedInstance().taskForAuthentication(authorizationString){ (results, error) in
             if error == nil{
+                print(results)
                 completionHandler(results: results, error: nil)
             }
             else{

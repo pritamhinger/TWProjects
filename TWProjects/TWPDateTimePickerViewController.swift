@@ -26,7 +26,7 @@ class TWPDateTimePickerViewController: UIViewController {
         }
         
         print(dateTimePicker.date)
-        NSNotificationCenter.defaultCenter().postNotificationName(AppConstants.NotificationName.DateChosenNotification, object: nil, userInfo: [AppConstants.NotificatioPayloadKeys.ChosenDate:dateTimePicker.date])
         dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(AppConstants.NotificationName.DateChosenNotification, object: nil, userInfo: [AppConstants.NotificatioPayloadKeys.ChosenDate:dateTimePicker.date])
     }
 }

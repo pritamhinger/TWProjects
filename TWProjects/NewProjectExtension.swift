@@ -36,7 +36,16 @@ extension TWPAddProjectViewController{
             
         case 1:
             cell.textLabel?.text = "Tags: "
-            cell.detailTextLabel?.text = "Not Tagged"
+            if tags == nil{
+                cell.detailTextLabel?.text = "Not Tagged"
+                cell.detailTextLabel?.backgroundColor = UIColor.clearColor()
+                cell.detailTextLabel?.textColor = UIColor.lightGrayColor()
+            }
+            else{
+                cell.detailTextLabel?.text = tags!
+                cell.detailTextLabel?.backgroundColor = UIColor(colorLiteralRed: 0, green: 150.0/255, blue: 200.0/255, alpha: 1.0)
+                cell.detailTextLabel?.textColor = UIColor.whiteColor()
+            }
         case 2:
             cell.textLabel?.text = "Category: "
             cell.detailTextLabel?.text = "No Category"
@@ -74,6 +83,19 @@ extension TWPAddProjectViewController{
                 break
             case 4:
                 endDate = CommonFunctions.getFormattedDateForUI((data[AppConstants.NotificatioPayloadKeys.ChosenDate] as? NSDate)!)
+                
+                
+                if startDate != nil && endDate != nil{
+                    let stDate = CommonFunctions.getDateFromString(startDate!, fullFormat: true)
+                    let enDate = CommonFunctions.getDateFromString(endDate!, fullFormat: true)
+                    
+                    if enDate?.compare(stDate!) == NSComparisonResult.OrderedAscending{
+                        CommonFunctions.showError(self, message: "End Date has to be more than or equal to start Date", title: AppConstants.AlertViewTitle.Error, style: .Alert)
+                        endDate = nil
+                        return
+                    }
+                }
+                
                 break
             default:
                 break
@@ -81,5 +103,15 @@ extension TWPAddProjectViewController{
         }
         
         tableView.reloadData()
+    }
+}
+
+extension TWPAddProjectViewController{
+    func extractTagsFromTitle(projecTitle:String) -> String {
+        if let idx = title?.characters.indexOf("#"){
+            print(title?.startIndex.distanceTo(idx))
+        }
+        //print(hashRange)
+        return ""
     }
 }

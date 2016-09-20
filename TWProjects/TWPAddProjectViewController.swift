@@ -61,6 +61,12 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func projectTitleEntered(sender: UITextField) {
+//        print("Project Title is : \(sender.text!)")
+//        tags = sender.detectHashTags()
+//        tableView.reloadData()
+    }
+    
     @IBAction func saveProject(sender: UIBarButtonItem) {
         if projectTitle.text?.characters.count == 0{
             CommonFunctions.showError(self, message: "Project should have a title", title: AppConstants.AlertViewTitle.MoreInformationNeeded, style: .Alert)
@@ -70,16 +76,6 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         if projectDescTextView.text.characters.count == 0{
             CommonFunctions.showError(self, message: "Project description is required", title: AppConstants.AlertViewTitle.MoreInformationNeeded, style: .Alert)
             return;
-        }
-        
-        if startDate != nil && endDate != nil{
-            let stDate = CommonFunctions.getDateFromString(startDate!, fullFormat: true)
-            let enDate = CommonFunctions.getDateFromString(endDate!, fullFormat: true)
-            
-            if enDate?.compare(stDate!) == NSComparisonResult.OrderedAscending{
-                CommonFunctions.showError(self, message: "End Date has to be more than or equal to start Date", title: AppConstants.AlertViewTitle.Error, style: .Alert)
-                return
-            }
         }
         
         var row = 0
@@ -120,6 +116,8 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
         var json = CommonFunctions.convertDictionaryToString(postRequestData)
         json = "{\"\(TWProjectsClient.ProjectResponseKeys.Project)\":{\(json)}}"
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.label.text = "Adding Project"
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
@@ -140,6 +138,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     
                     performUIUpdatesOnMainQueue{
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                         hud.hideAnimated(true)
                     }
                 }
@@ -162,6 +161,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     
                     performUIUpdatesOnMainQueue{
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                         hud.hideAnimated(true)
                     }
                 }

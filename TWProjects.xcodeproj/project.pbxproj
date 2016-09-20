@@ -32,6 +32,7 @@
 		4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A0981D89E271005AC5AC /* DashboardExtension.swift */; };
 		4857A09B1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */; };
 		4857A09D1D8B1B7D005AC5AC /* ProjectsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */; };
+		486FAE421D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486FAE411D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift */; };
 		489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */; };
 		489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */; };
 		489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */; };
@@ -96,6 +97,7 @@
 		4857A0981D89E271005AC5AC /* DashboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardExtension.swift; sourceTree = "<group>"; };
 		4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPCoreDataHelperViewController.swift; sourceTree = "<group>"; };
 		4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsExtension.swift; sourceTree = "<group>"; };
+		486FAE411D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewHashTagDetectorExtension.swift; sourceTree = "<group>"; };
 		489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAddProjectViewController.swift; sourceTree = "<group>"; };
 		489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPDateTimePickerViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		4857A07C1D8664C2005AC5AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				486FAE401D905B7C00313343 /* FrameWork Extensions */,
 				4857A07D1D866556005AC5AC /* CommonFunctions.swift */,
 			);
 			name = Common;
@@ -236,6 +239,14 @@
 				489957B81D8DC20600595FA8 /* NewProjectExtension.swift */,
 			);
 			name = "Controller Extensions";
+			sourceTree = "<group>";
+		};
+		486FAE401D905B7C00313343 /* FrameWork Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				486FAE411D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift */,
+			);
+			name = "FrameWork Extensions";
 			sourceTree = "<group>";
 		};
 		489957A51D8D006300595FA8 /* CustomCode */ = {
@@ -552,6 +563,7 @@
 				4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */,
 				4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */,
 				4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */,
+				486FAE421D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift in Sources */,
 				489957B71D8DAFA200595FA8 /* TWPCustomModalTransitionAnimator.swift in Sources */,
 				4857A0801D8665C9005AC5AC /* AppConstants.swift in Sources */,
 				48E0E0AA1D844E4D00991DF4 /* AppDelegate.swift in Sources */,
