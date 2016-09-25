@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDataSource, UITableViewDelegate {
+class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     // MARK: - Properties
     var projects = [Project]()
@@ -24,6 +24,8 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
             return projectTypeSegmentControl.selectedSegmentIndex == 1
         }
     }
+    
+    var searchController: UISearchController!
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -41,6 +43,8 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
             menuBarButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        configureSearchController()
         
         // Self Sizing Table View Cell.
         // Setting table view properties to enable self sizing of table view cell when a long text string

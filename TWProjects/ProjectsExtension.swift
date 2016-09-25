@@ -193,6 +193,10 @@ extension TWPProjectsViewController{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if shouldShowSearchResults{
+            return filteredArray.count
+        }
+        
         if starredProjectShown{
             if starredProjects.count == 0{
                 showLabelForNoRecords("No starred projects yet. Go to All Projects Segment and tap the star on the left side to star a project.")
@@ -224,11 +228,16 @@ extension TWPProjectsViewController{
         // If we have starred project and current section is first then we need to get project object from Starred Projects Collection
         // Please note here that if we gave starred projects then that would be our first section always.
         // Is there is not starred projects then first section would be off all projects
-        if starredProjectShown{
-            project = starredProjects[indexPath.row]
+        if shouldShowSearchResults{
+            project = filteredArray[indexPath.row]
         }
         else{
-            project = projects[indexPath.row]
+            if starredProjectShown{
+                project = starredProjects[indexPath.row]
+            }
+            else{
+                project = projects[indexPath.row]
+            }
         }
         
         // Setting Image based on the Project's Starred State
@@ -271,7 +280,52 @@ extension TWPProjectsViewController{
         // Calling procedure to sync data from Teamwork servers
         syncProjectsFromTWServer()
     }
+}
+
+extension TWPProjectsViewController{
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchString = searchController.searchBar.text
+        if starredProjectShown{
+            filteredArray = starredProjects.filter({ (project) in
+                let currentProjectName = NSString(string: project.name!)
+                print(currentProjectName)
+                return (currentProjectName.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+                
+            })
+        }
+        else{
+            filteredArray = projects.filter({ (project) in
+                let currentProjectName = NSString(string: project.name!)
+                return (currentProjectName.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+                
+            })
+        }
+        
+        
+        tableView.reloadData()
+    }
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        shouldShowSearchResults = true
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if !shouldShowSearchResults{
+            shouldShowSearchResults = true
+            tableView.reloadData()
+        }
+        
+        searchController.searchBar.resignFirstResponder()
+    }
+}
+
+extension TWPProjectsViewController{
     func showLabelForNoRecords(message:String){
         let frame:CGRect = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
         
@@ -285,5 +339,15 @@ extension TWPProjectsViewController{
         emptyLabel.sizeToFit();
         self.tableView.backgroundView = emptyLabel;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+    }
+    
+    func configureSearchController(){
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Type in here to search a project..."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
     }
 }
