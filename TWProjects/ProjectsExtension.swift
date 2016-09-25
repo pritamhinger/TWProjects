@@ -46,9 +46,9 @@ extension TWPProjectsViewController{
                             // Casting Object
                             let project = (obj as! Project)
                             
-                            // Adding project ids in separate Collection. 
+                            // Adding project ids in separate Collection.
                             // We would be using this collection to check if we have a new project created by any other user or project
-                            // created from WebSite. Basically, if in Get Call of Projects we have a ProjectId not contained in this 
+                            // created from WebSite. Basically, if in Get Call of Projects we have a ProjectId not contained in this
                             // collection, then we need to store that project in out persistent store as well
                             projectIds.append(project.id!)
                             
@@ -94,7 +94,7 @@ extension TWPProjectsViewController{
                                 
                                 var projectsDAO = [ProjectDAO]()
                                 var projectDAO:ProjectDAO?
-                                // Iterating over response JSON and creating ProjectDAO object which would then be mapped to Project Entity 
+                                // Iterating over response JSON and creating ProjectDAO object which would then be mapped to Project Entity
                                 // Instances to be stored in Persistent store
                                 for projectJSON in projectsJSON{
                                     projectDAO = ProjectDAO(userDictionary: projectJSON, companyDAO: nil)
@@ -103,7 +103,7 @@ extension TWPProjectsViewController{
                                     }
                                 }
                                 
-                                // Clearing all starred projects as we would be again iterating over projects list we got from Teamwork 
+                                // Clearing all starred projects as we would be again iterating over projects list we got from Teamwork
                                 // servers. And we have data in latest state.
                                 self.starredProjects.removeAll()
                                 for proj in projectsDAO{
@@ -118,7 +118,7 @@ extension TWPProjectsViewController{
                                         self.projects.append(project)
                                     }
                                     else{
-                                        // If the project is already stored on persistent store then we would be just mapping 
+                                        // If the project is already stored on persistent store then we would be just mapping
                                         // new value with old values.
                                         // Please note here that old and new values may be same as well.
                                         // Also i am not mapping all properties. Just mapping some important properties.
@@ -150,7 +150,7 @@ extension TWPProjectsViewController{
                                     
                                     // Please note that i am reloading table view 2 time in below fashion as there is a bug in Apple API
                                     // in calculating Row Height Value.
-                                    // Link I Referred is : 
+                                    // Link I Referred is :
                                     // 1. http://useyourloaf.com/blog/self-sizing-table-view-cells/#comment-1783719287
                                     // 2. http://stackoverflow.com/questions/27787552/ios-8-auto-height-cell-not-correct-height-at-first-load
                                     self.tableView.reloadData()
@@ -185,7 +185,7 @@ extension TWPProjectsViewController{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Deselecting Cell after user tap on Table View Cell as we have to Navigate to Add Project VC and we don't 
+        // Deselecting Cell after user tap on Table View Cell as we have to Navigate to Add Project VC and we don't
         // want to remember last selection
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? TWPProjectsTableViewCell
         cell?.selected = false
@@ -253,7 +253,7 @@ extension TWPProjectsViewController{
         cell.projectStarredImageView.userInteractionEnabled = true
         //Setting ProjectId as Tag to UIImageView.
         // We would be using this tag value to get the project assiciated with Table View Cell, when
-        // we would be starring or unstarring projects. Also we would use this tag when we would be 
+        // we would be starring or unstarring projects. Also we would use this tag when we would be
         // editing a project
         cell.projectStarredImageView.tag = Int((project?.id!)!)!
         
@@ -266,6 +266,15 @@ extension TWPProjectsViewController{
         cell.projectDesc.text = project!.desc!
         cell.projectName.text = project!.name!
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if shouldShowSearchResults{
+            return 44
+        }
+        else{
+            return 0
+        }
     }
 }
 
@@ -286,19 +295,30 @@ extension TWPProjectsViewController{
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchString = searchController.searchBar.text
         if starredProjectShown{
-            filteredArray = starredProjects.filter({ (project) in
-                let currentProjectName = NSString(string: project.name!)
-                print(currentProjectName)
-                return (currentProjectName.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
-                
-            })
+            
+            if searchString == ""{
+                filteredArray = starredProjects
+            }
+            else{
+                filteredArray = starredProjects.filter({ (project) in
+                    let currentProjectName = NSString(string: project.name!)
+                    print(currentProjectName)
+                    return (currentProjectName.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+                    
+                })
+            }
         }
         else{
-            filteredArray = projects.filter({ (project) in
-                let currentProjectName = NSString(string: project.name!)
-                return (currentProjectName.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
-                
-            })
+            if searchString == ""{
+                filteredArray = projects
+            }
+            else{
+                filteredArray = projects.filter({ (project) in
+                    let currentProjectName = NSString(string: project.name!)
+                    return (currentProjectName.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+                    
+                })
+            }
         }
         
         

@@ -45,6 +45,7 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         }
         
         configureSearchController()
+        //tableView.contentInset = UIEdgeInsetsMake(kHeightOfTableViewCells, 0, 0, 0)
         
         // Self Sizing Table View Cell.
         // Setting table view properties to enable self sizing of table view cell when a long text string
