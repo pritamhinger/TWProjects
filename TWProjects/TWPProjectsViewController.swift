@@ -16,10 +16,19 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
     var projectIds = [String]()
     var sectionTitles = [String]()
     var starredProjects = [Project]()
+    var filteredArray = [Project]()
+    var shouldShowSearchResults = false
+    
+    var starredProjectShown:Bool{
+        get{
+            return projectTypeSegmentControl.selectedSegmentIndex == 1
+        }
+    }
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
+    @IBOutlet weak var projectTypeSegmentControl: UISegmentedControl!
     
     // MARK: - Controller Life Cycle Events
     override func viewDidLoad() {
@@ -62,6 +71,11 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         
         // Subscribing to Notification broadcasted where a new project is created or an existing project is changed
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TWPProjectsViewController.updateUI(_:)), name: AppConstants.NotificationName.DataSaveSuccessNotification, object: nil)
+    }
+    
+    @IBAction func projectTypeChanged(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+        tableView.reloadData()
     }
     
     // MARK: - Navigation

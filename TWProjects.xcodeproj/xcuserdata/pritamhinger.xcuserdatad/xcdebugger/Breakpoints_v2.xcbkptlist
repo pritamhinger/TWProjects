@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TWProjects/TWPProjectsViewController.swift"
-            timestampString = "495981210.672433"
+            timestampString = "496518211.84861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "projectStarredImageTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TWProjects/TWPProjectsViewController.swift"
-            timestampString = "495919912.391642"
+            timestampString = "496518211.84861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
             <Locations>
@@ -688,22 +688,6 @@
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "getDateFromString(_:fullFormat:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TWProjects/ProjectsExtension.swift"
-            timestampString = "495988978.643408"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "numberOfSectionsInTableView(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

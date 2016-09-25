@@ -322,7 +322,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zzY-PD-TJf">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="L92-P7-vMv"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="1ia-ym-r0T">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="All Projects"/>
+                                <segment title="Starred"/>
+                            </segments>
+                            <connections>
+                                <action selector="projectTypeChanged:" destination="nEr-SU-g6v" eventType="valueChanged" id="2Ax-31-LU3"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="12O-wV-1Mc">
                             <connections>
                                 <segue destination="voR-DX-tEw" kind="presentation" identifier="addProjectSegue" id="WQb-U4-8gF"/>
@@ -331,6 +343,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuBarButton" destination="L92-P7-vMv" id="LIO-CH-2hA"/>
+                        <outlet property="projectTypeSegmentControl" destination="1ia-ym-r0T" id="Pxy-R2-Bt9"/>
                         <outlet property="tableView" destination="FSc-IC-VEU" id="RPK-WX-kKs"/>
                     </connections>
                 </viewController>
@@ -621,9 +634,9 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rlF-Uq-AXZ"/>
+        <segue reference="WQb-U4-8gF"/>
         <segue reference="RuR-ee-h81"/>
         <segue reference="WlI-MM-Kph"/>
-        <segue reference="5lw-V7-49T"/>
+        <segue reference="rlF-Uq-AXZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -181,12 +181,6 @@ extension TWPProjectsViewController{
 extension TWPProjectsViewController{
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        // If we have one or more Starred Projects we need to have 2 sections or else we would be having only 1 section
-        if starredProjects.count > 0{
-            return 2
-        }
-        
         return 1
     }
     
@@ -197,43 +191,25 @@ extension TWPProjectsViewController{
         cell?.selected = false
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        // If we have one or more starred project then the first section title has to be Starred Projects
-        if starredProjects.count > 0 && section == 0{
-            return "Starred Projects"
-        }
-        
-        // If we have zero starred projects or if we want title for second section, we would be returning Company Name
-        return (CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.CompanyNames) as? [String])?.first
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // If we have one or more starred project and the section in question is first then we would return the number of starred projects
-        if starredProjects.count > 0 && section == 0{
+        if starredProjectShown{
+            if starredProjects.count == 0{
+                showLabelForNoRecords("No starred projects yet. Go to All Projects Segment and tap the star on the left side to star a project.")
+            }
+            else{
+                self.tableView.backgroundView = nil
+            }
+            
             return starredProjects.count
         }
-        
-        // If there are not= projects then we would be showing a label in table view background.
-        // Please note that we are not making a check on starred projects as starred project is subset of projects and 
-        // we checking for projects count is sufficient
-        if projects.count == 0{
-            let frame:CGRect = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-            
-            let emptyLabel:UILabel = UILabel(frame: frame);
-            emptyLabel.text = "No projects yet. Click '+' at the top right corner and get started."
-            emptyLabel.textColor = UIColor.blackColor();
-            emptyLabel.numberOfLines = 0;
-            emptyLabel.textAlignment = NSTextAlignment.Center;
-            let font:UIFont = UIFont(name: "AvenirNext-MediumItalic", size: 20)!
-            emptyLabel.font = font;
-            emptyLabel.sizeToFit();
-            self.tableView.backgroundView = emptyLabel;
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
-        }
         else{
-            self.tableView.backgroundView = nil
+            if projects.count == 0{
+                showLabelForNoRecords("No projects yet. Click '+' at the top right corner and get started.")
+            }
+            else{
+                self.tableView.backgroundView = nil
+            }
         }
         
         return projects.count
@@ -248,7 +224,7 @@ extension TWPProjectsViewController{
         // If we have starred project and current section is first then we need to get project object from Starred Projects Collection
         // Please note here that if we gave starred projects then that would be our first section always.
         // Is there is not starred projects then first section would be off all projects
-        if starredProjects.count > 0 && indexPath.section == 0{
+        if starredProjectShown{
             project = starredProjects[indexPath.row]
         }
         else{
@@ -294,5 +270,20 @@ extension TWPProjectsViewController{
         loadProjectsFromStore()
         // Calling procedure to sync data from Teamwork servers
         syncProjectsFromTWServer()
+    }
+    
+    func showLabelForNoRecords(message:String){
+        let frame:CGRect = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        
+        let emptyLabel:UILabel = UILabel(frame: frame);
+        emptyLabel.text = message
+        emptyLabel.textColor = UIColor.blackColor();
+        emptyLabel.numberOfLines = 0;
+        emptyLabel.textAlignment = NSTextAlignment.Center;
+        let font:UIFont = UIFont(name: "AvenirNext-MediumItalic", size: 20)!
+        emptyLabel.font = font;
+        emptyLabel.sizeToFit();
+        self.tableView.backgroundView = emptyLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
     }
 }
