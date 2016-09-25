@@ -81,7 +81,7 @@ extension TWPProjectsViewController{
     func syncProjectsFromTWServer(){
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
             
-            let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
+            let methodName = TWProjectsClient.APIMethod.Projects
             
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authorizationCookie){ (results, error) in

@@ -144,7 +144,7 @@ class TWPAddProjectViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
             else{
-                let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Projects, methodFormat: TWProjectsClient.APIFormat.JSON)
+                let methodName = TWProjectsClient.APIMethod.Projects
                 TWProjectsClient.sharedInstance().insertResourceForMethod(methodName, jsonBody: json, authorizationCookie: authorizationCookie){ (results, error) in
                     if error == nil{
                         print(results)

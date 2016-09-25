@@ -66,7 +66,7 @@ class TWPLoginViewController: UIViewController, UITextFieldDelegate {
                             // Initiating a new Network Activity indicator View
                             let hudAuthorization = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                             hudAuthorization.label.text = "Authorizing"
-                            let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.ACCOUNT, methodFormat: TWProjectsClient.APIFormat.JSON)
+                            let methodName = TWProjectsClient.APIMethod.ACCOUNT
                             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authenticationHeader){ (results, error) in
                                 if error == nil{
                                     if let accountStatus = results![TWProjectsClient.AccountResponseKeys.Status] as? String{

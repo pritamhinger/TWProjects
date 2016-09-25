@@ -14,6 +14,7 @@ extension TWProjectsClient{
         static let AuthenticationURL = "authenticate.teamworkpm.net"
         static let Path = ""
         static let Method = "/authenticate.json"
+        static let DefaultFormat = APIFormat.JSON
     }
     
     struct APIFormat {
@@ -33,11 +34,12 @@ extension TWProjectsClient{
     }
     
     struct APIMethod {
-        static let ACCOUNT = "account"
-        static let Companies = "companies"
-        static let Projects = "projects"
-        static let StarProject = "projects/{project_id}/star.json"
-        static let UnstarProject = "/projects/{project_id}/unstar.json"
-        static let UpdateProject = "projects/{project_id}.json"
+        static let ACCOUNT = "account.\(APIResource.DefaultFormat)"
+        static let Companies = "companies.\(APIResource.DefaultFormat)"
+        static let Projects = "projects.\(APIResource.DefaultFormat)"
+        static let StarProject = "projects/{project_id}/star.\(APIResource.DefaultFormat)"
+        static let UnstarProject = "/projects/{project_id}/unstar.\(APIResource.DefaultFormat)"
+        static let UpdateProject = "projects/{project_id}.\(APIResource.DefaultFormat)"
+        static let AllActivity = "latestActivity.\(APIResource.DefaultFormat)"
     }
 }

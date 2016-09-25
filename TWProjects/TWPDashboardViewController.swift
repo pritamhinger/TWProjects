@@ -39,7 +39,7 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
     
     func getCompaniesFromTWServers() {
         if let authorizationCookie = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.AuthorizationCookie) as? String{
-            let methodName = TWProjectsClient.getMethodName(TWProjectsClient.APIMethod.Companies, methodFormat: TWProjectsClient.APIFormat.JSON)
+            let methodName = TWProjectsClient.APIMethod.Companies
             TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authorizationCookie){ (results, error) in
                 
                 if error == nil{

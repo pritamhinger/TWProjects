@@ -98,9 +98,9 @@ extension TWProjectsClient{
         return components.URL!
     }
     
-    class func getMethodName(methodName:String, methodFormat:String) -> String{
-        return "\(methodName).\(methodFormat)"
-    }
+//    class func getMethodName(methodName:String, methodFormat:String) -> String{
+//        return "\(methodName).\(methodFormat)"
+//    }
     
     private func subtituteKeyInMethod(method: String, key: String, value: String) -> String? {
         if method.rangeOfString("{\(key)}") != nil {
