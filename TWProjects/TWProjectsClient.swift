@@ -26,6 +26,7 @@ class TWProjectsClient: NSObject {
     func taskForAuthentication(authorizationCookie:String, completionHandler: (result: AnyObject!, error:NSError?) -> Void) -> NSURLSessionDataTask {
         
         let request = NSMutableURLRequest(URL: TWProjectsClient.twAuthenticationURL())
+        request.HTTPShouldHandleCookies = false
         request.HTTPMethod = TWProjectsClient.HTTPMethod.GET
         request.addValue("Basic \(authorizationCookie)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
