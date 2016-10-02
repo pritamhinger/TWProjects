@@ -39,6 +39,7 @@
 		487568181DA17F4400C97AF4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568171DA17F4400C97AF4 /* Colors.swift */; };
 		4875681A1DA187C700C97AF4 /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568191DA187C700C97AF4 /* TriangleLayer.swift */; };
 		4875681C1DA1904200C97AF4 /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875681B1DA1904200C97AF4 /* RectangleLayer.swift */; };
+		4875681E1DA1925900C97AF4 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875681D1DA1925900C97AF4 /* ArcLayer.swift */; };
 		489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */; };
 		489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */; };
 		489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */; };
@@ -110,6 +111,7 @@
 		487568171DA17F4400C97AF4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		487568191DA187C700C97AF4 /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
 		4875681B1DA1904200C97AF4 /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
+		4875681D1DA1925900C97AF4 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
 		489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAddProjectViewController.swift; sourceTree = "<group>"; };
 		489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPDateTimePickerViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				487568151DA17EBB00C97AF4 /* CircleLayer.swift */,
 				487568191DA187C700C97AF4 /* TriangleLayer.swift */,
 				4875681B1DA1904200C97AF4 /* RectangleLayer.swift */,
+				4875681D1DA1925900C97AF4 /* ArcLayer.swift */,
 			);
 			name = CALayers;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				4857A08E1D89BE71005AC5AC /* Project.swift in Sources */,
 				4857A0941D89BFEA005AC5AC /* ResponseKeys.swift in Sources */,
 				489957B31D8DAB0D00595FA8 /* TWPCustomModalTransitioningDelegate.swift in Sources */,
+				4875681E1DA1925900C97AF4 /* ArcLayer.swift in Sources */,
 				489957AF1D8DA25900595FA8 /* TWPCustomPresentationController.swift in Sources */,
 				4857A0651D847728005AC5AC /* MBProgressHUD.m in Sources */,
 				4857A0711D85563F005AC5AC /* User.swift in Sources */,

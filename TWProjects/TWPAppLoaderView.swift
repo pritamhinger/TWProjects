@@ -21,7 +21,7 @@ class TWPAppLoaderView: UIView {
     let triangleLayer = TriangleLayer()
     let redRectangleLayer = RectangleLayer()
     let blueRectangleLayer = RectangleLayer()
-    
+    let arcLayer = ArcLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,7 +71,15 @@ class TWPAppLoaderView: UIView {
     func drawBlueAnimatedRectangle() {
         layer.addSublayer(blueRectangleLayer)
         blueRectangleLayer.animateStrokeWithColor(Colors.blue)
+        NSTimer.scheduledTimerWithTimeInterval(0.40, target: self, selector: #selector(TWPAppLoaderView.drawArcLayer), userInfo: nil, repeats: false)
     }
+    
+    func drawArcLayer() {
+        layer.addSublayer(arcLayer)
+        arcLayer.animate()
+        
+    }
+    
     /*
      // Only override drawRect: if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.
