@@ -45,4 +45,36 @@ class CircleLayer: CAShapeLayer {
         expandAnimation.removedOnCompletion = false
         addAnimation(expandAnimation, forKey: nil)
     }
+    
+    func wobbleCircle() {
+        let wobbleAnimation1: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        wobbleAnimation1.fromValue = circlePathFull.CGPath
+        wobbleAnimation1.toValue = circlePathMoveVertical.CGPath
+        wobbleAnimation1.beginTime = 0.0
+        wobbleAnimation1.duration = AppConstants.DurationContants.Animation
+        
+        let wobbleAnimation2: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        wobbleAnimation2.fromValue = circlePathMoveVertical.CGPath
+        wobbleAnimation2.toValue = circlePathMoveHorizontal.CGPath
+        wobbleAnimation2.beginTime = wobbleAnimation1.beginTime + wobbleAnimation1.duration
+        wobbleAnimation2.duration = AppConstants.DurationContants.Animation
+        
+        let wobbleAnimation3: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        wobbleAnimation3.fromValue = circlePathMoveHorizontal.CGPath
+        wobbleAnimation3.toValue = circlePathMoveVertical.CGPath
+        wobbleAnimation3.beginTime = wobbleAnimation2.beginTime + wobbleAnimation2.duration
+        wobbleAnimation3.duration = AppConstants.DurationContants.Animation
+        
+        let wobbleAnimation4: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        wobbleAnimation4.fromValue = circlePathMoveVertical.CGPath
+        wobbleAnimation4.toValue = circlePathFull.CGPath
+        wobbleAnimation4.beginTime = wobbleAnimation3.beginTime + wobbleAnimation3.duration
+        wobbleAnimation4.duration = AppConstants.DurationContants.Animation
+        
+        let wobbleAnimationGroup: CAAnimationGroup = CAAnimationGroup()
+        wobbleAnimationGroup.animations = [wobbleAnimation1, wobbleAnimation2, wobbleAnimation3, wobbleAnimation4]
+        wobbleAnimationGroup.duration = wobbleAnimation4.beginTime + wobbleAnimation4.duration
+        wobbleAnimationGroup.repeatCount = 2
+        addAnimation(wobbleAnimationGroup, forKey: nil)
+    }
 }

@@ -18,6 +18,7 @@ class TWPAppLoaderView: UIView {
     weak var delegate:AppLoaderViewDelegate?
     
     let circleLayer = CircleLayer()
+    let triangleLayer = TriangleLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,8 +32,14 @@ class TWPAppLoaderView: UIView {
     func addCirclePath() {
         layer.addSublayer(circleLayer)
         circleLayer.expand()
+        NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: #selector(TWPAppLoaderView.shakeCircle), userInfo: nil, repeats: false)
     }
     
+    func shakeCircle() {
+        circleLayer.wobbleCircle()
+        layer.addSublayer(triangleLayer)
+        circleLayer.wobbleCircle()
+    }
     
     /*
     // Only override drawRect: if you perform custom drawing.

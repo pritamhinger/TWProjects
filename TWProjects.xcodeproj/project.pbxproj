@@ -37,6 +37,7 @@
 		487568141DA179DB00C97AF4 /* TWPAppLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568131DA179DB00C97AF4 /* TWPAppLoaderView.swift */; };
 		487568161DA17EBB00C97AF4 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568151DA17EBB00C97AF4 /* CircleLayer.swift */; };
 		487568181DA17F4400C97AF4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568171DA17F4400C97AF4 /* Colors.swift */; };
+		4875681A1DA187C700C97AF4 /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568191DA187C700C97AF4 /* TriangleLayer.swift */; };
 		489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */; };
 		489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */; };
 		489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */; };
@@ -106,6 +107,7 @@
 		487568131DA179DB00C97AF4 /* TWPAppLoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAppLoaderView.swift; sourceTree = "<group>"; };
 		487568151DA17EBB00C97AF4 /* CircleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
 		487568171DA17F4400C97AF4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		487568191DA187C700C97AF4 /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
 		489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAddProjectViewController.swift; sourceTree = "<group>"; };
 		489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPDateTimePickerViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				487568151DA17EBB00C97AF4 /* CircleLayer.swift */,
+				487568191DA187C700C97AF4 /* TriangleLayer.swift */,
 			);
 			name = CALayers;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				487568181DA17F4400C97AF4 /* Colors.swift in Sources */,
 				489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */,
 				489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */,
+				4875681A1DA187C700C97AF4 /* TriangleLayer.swift in Sources */,
 				4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */,
 				4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */,
 				487568141DA179DB00C97AF4 /* TWPAppLoaderView.swift in Sources */,
