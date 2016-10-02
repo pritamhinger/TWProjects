@@ -19,6 +19,9 @@ class TWPAppLoaderView: UIView {
     
     let circleLayer = CircleLayer()
     let triangleLayer = TriangleLayer()
+    let redRectangleLayer = RectangleLayer()
+    let blueRectangleLayer = RectangleLayer()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,8 +58,20 @@ class TWPAppLoaderView: UIView {
         rotationAnimation.removedOnCompletion = true
         layer.addAnimation(rotationAnimation, forKey: nil)
         circleLayer.collapseCircle()
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.45, target: self, selector: #selector(TWPAppLoaderView.drawRedAnimatedRectangle), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.65, target: self, selector: #selector(TWPAppLoaderView.drawBlueAnimatedRectangle), userInfo: nil, repeats: false)
     }
     
+    func drawRedAnimatedRectangle() {
+        layer.addSublayer(redRectangleLayer)
+        redRectangleLayer.animateStrokeWithColor(Colors.red)
+    }
+    
+    func drawBlueAnimatedRectangle() {
+        layer.addSublayer(blueRectangleLayer)
+        blueRectangleLayer.animateStrokeWithColor(Colors.blue)
+    }
     /*
      // Only override drawRect: if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.
