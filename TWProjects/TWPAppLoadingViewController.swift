@@ -22,7 +22,31 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
     }
     
     func animateCompanyLabel() {
+        appLoaderView.removeFromSuperview()
+        view.backgroundColor = Colors.blue
         
+        let label = UILabel(frame: view.frame)
+        label.textColor = Colors.white
+        label.font = UIFont(name: "AvenirNext-Bold", size: 170.0)
+        label.textAlignment = .Center
+        label.text = "TW"
+        label.transform = CGAffineTransformScale(label.transform, 0.25, 0.25)
+        view.addSubview(label)
+        
+        let frame = CGRectMake(label.frame.origin.x, label.frame.origin.y + label.frame.height, label.frame.width, CGFloat(25))
+        let label2 = UILabel(frame: frame)
+        label2.textColor = Colors.white
+        label2.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
+        label2.textAlignment = .Center
+        label2.text = "Projects"
+        label2.transform = CGAffineTransformScale(label2.transform, 0.25, 0.25)
+        view.addSubview(label2)
+        
+        UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .CurveEaseInOut, animations: {
+            label.transform = CGAffineTransformScale(label.transform, 4.0, 4.0)
+            label2.transform = CGAffineTransformScale(label2.transform, 4.0, 4.0)
+            }, completion: { finished in
+        })
     }
     
     func addLoaderView() {
