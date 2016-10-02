@@ -77,4 +77,15 @@ class CircleLayer: CAShapeLayer {
         wobbleAnimationGroup.repeatCount = 2
         addAnimation(wobbleAnimationGroup, forKey: nil)
     }
+    
+    func collapseCircle(){
+        let collapseAnimation = CABasicAnimation(keyPath: "path")
+        collapseAnimation.fromValue = circlePathFull.CGPath
+        collapseAnimation.toValue = circlePathZero.CGPath
+        collapseAnimation.beginTime = 0.0
+        collapseAnimation.duration = AppConstants.DurationContants.Animation
+        collapseAnimation.fillMode = kCAFillModeForwards
+        collapseAnimation.removedOnCompletion = false
+        addAnimation(collapseAnimation, forKey: nil)
+    }
 }
