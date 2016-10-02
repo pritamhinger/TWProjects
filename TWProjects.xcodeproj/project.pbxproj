@@ -33,6 +33,10 @@
 		4857A09B1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */; };
 		4857A09D1D8B1B7D005AC5AC /* ProjectsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */; };
 		486FAE421D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486FAE411D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift */; };
+		4875680E1DA1783300C97AF4 /* TWPAppLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875680D1DA1783300C97AF4 /* TWPAppLoadingViewController.swift */; };
+		487568141DA179DB00C97AF4 /* TWPAppLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568131DA179DB00C97AF4 /* TWPAppLoaderView.swift */; };
+		487568161DA17EBB00C97AF4 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568151DA17EBB00C97AF4 /* CircleLayer.swift */; };
+		487568181DA17F4400C97AF4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487568171DA17F4400C97AF4 /* Colors.swift */; };
 		489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */; };
 		489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */; };
 		489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */; };
@@ -98,6 +102,10 @@
 		4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPCoreDataHelperViewController.swift; sourceTree = "<group>"; };
 		4857A09C1D8B1B7D005AC5AC /* ProjectsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsExtension.swift; sourceTree = "<group>"; };
 		486FAE411D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewHashTagDetectorExtension.swift; sourceTree = "<group>"; };
+		4875680D1DA1783300C97AF4 /* TWPAppLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAppLoadingViewController.swift; sourceTree = "<group>"; };
+		487568131DA179DB00C97AF4 /* TWPAppLoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAppLoaderView.swift; sourceTree = "<group>"; };
+		487568151DA17EBB00C97AF4 /* CircleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
+		487568171DA17F4400C97AF4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		489957A71D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPAddProjectViewController.swift; sourceTree = "<group>"; };
 		489957AC1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWPDateTimePickerViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +162,7 @@
 				4857A07F1D8665C9005AC5AC /* AppConstants.swift */,
 				4857A0831D87C05F005AC5AC /* CoreDataConstants.swift */,
 				4857A0931D89BFEA005AC5AC /* ResponseKeys.swift */,
+				487568171DA17F4400C97AF4 /* Colors.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -249,11 +258,45 @@
 			name = "FrameWork Extensions";
 			sourceTree = "<group>";
 		};
+		4875680F1DA178C300C97AF4 /* HalfModal */ = {
+			isa = PBXGroup;
+			children = (
+				489957B01D8DAADD00595FA8 /* View */,
+				489957B11D8DAAE600595FA8 /* Animation */,
+			);
+			name = HalfModal;
+			sourceTree = "<group>";
+		};
+		487568101DA178DC00C97AF4 /* AppLoading */ = {
+			isa = PBXGroup;
+			children = (
+				487568121DA1799600C97AF4 /* CALayers */,
+				487568111DA1796C00C97AF4 /* View */,
+			);
+			name = AppLoading;
+			sourceTree = "<group>";
+		};
+		487568111DA1796C00C97AF4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				487568131DA179DB00C97AF4 /* TWPAppLoaderView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		487568121DA1799600C97AF4 /* CALayers */ = {
+			isa = PBXGroup;
+			children = (
+				487568151DA17EBB00C97AF4 /* CircleLayer.swift */,
+			);
+			name = CALayers;
+			sourceTree = "<group>";
+		};
 		489957A51D8D006300595FA8 /* CustomCode */ = {
 			isa = PBXGroup;
 			children = (
-				489957B11D8DAAE600595FA8 /* Animation */,
-				489957B01D8DAADD00595FA8 /* View */,
+				487568101DA178DC00C97AF4 /* AppLoading */,
+				4875680F1DA178C300C97AF4 /* HalfModal */,
 			);
 			name = CustomCode;
 			sourceTree = "<group>";
@@ -371,6 +414,7 @@
 				4857A09A1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift */,
 				489957A91D8D3D6C00595FA8 /* TWPAddProjectViewController.swift */,
 				489957BC1D8E656100595FA8 /* TWPLatestActivityViewController.swift */,
+				4875680D1DA1783300C97AF4 /* TWPAppLoadingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -539,6 +583,7 @@
 				4857A0991D89E271005AC5AC /* DashboardExtension.swift in Sources */,
 				489957B91D8DC20600595FA8 /* NewProjectExtension.swift in Sources */,
 				4857A0821D87BFCB005AC5AC /* CoreDataStack.swift in Sources */,
+				487568161DA17EBB00C97AF4 /* CircleLayer.swift in Sources */,
 				48E0E0AC1D844E4D00991DF4 /* TWPLoginViewController.swift in Sources */,
 				4857A09B1D8B0E26005AC5AC /* TWPCoreDataHelperViewController.swift in Sources */,
 				489957B51D8DAB7800595FA8 /* TWPCustomModalInteractiveTransition.swift in Sources */,
@@ -557,11 +602,14 @@
 				4857A0731D85B9BA005AC5AC /* Account.swift in Sources */,
 				4857A0901D89BE71005AC5AC /* Company.swift in Sources */,
 				4857A0691D851999005AC5AC /* TWProjectsHelper.swift in Sources */,
+				4875680E1DA1783300C97AF4 /* TWPAppLoadingViewController.swift in Sources */,
 				489957A81D8D00AE00595FA8 /* TWPProjectsTableViewCell.swift in Sources */,
+				487568181DA17F4400C97AF4 /* Colors.swift in Sources */,
 				489957AA1D8D3D6C00595FA8 /* TWPAddProjectViewController.swift in Sources */,
 				489957AD1D8D67ED00595FA8 /* TWPDateTimePickerViewController.swift in Sources */,
 				4857A0771D85D2EF005AC5AC /* SWRevealViewController.m in Sources */,
 				4857A0921D89BF06005AC5AC /* CompanyDAO.swift in Sources */,
+				487568141DA179DB00C97AF4 /* TWPAppLoaderView.swift in Sources */,
 				4857A07E1D866556005AC5AC /* CommonFunctions.swift in Sources */,
 				486FAE421D905BAF00313343 /* UITextViewHashTagDetectorExtension.swift in Sources */,
 				489957B71D8DAFA200595FA8 /* TWPCustomModalTransitionAnimator.swift in Sources */,

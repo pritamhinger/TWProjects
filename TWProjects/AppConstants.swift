@@ -57,4 +57,8 @@ struct AppConstants {
         static let ShownOnUI = ""
         static let PassedToAPI = "yyyyMMdd"
     }
+    
+    struct  DurationContants {
+        static let Animation: CFTimeInterval = 0.3
+    }
 }
