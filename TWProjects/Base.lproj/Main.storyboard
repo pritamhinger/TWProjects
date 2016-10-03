@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jQi-XK-8Xu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -20,6 +20,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Br8-Cx-FzX" kind="show" identifier="appSegueByPassLogin" id="Ipe-eD-MjH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zav-1I-U7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,12 +90,12 @@
                     <navigationItem key="navigationItem" id="uOK-9e-9NM"/>
                     <connections>
                         <outlet property="apiKeyTextField" destination="9SE-J2-8gu" id="Rkk-mJ-Iuk"/>
-                        <segue destination="Br8-Cx-FzX" kind="show" identifier="AppSegue" id="BKd-kK-uqS"/>
+                        <segue destination="Br8-Cx-FzX" kind="show" identifier="appSegue" id="BKd-kK-uqS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1322" y="233"/>
+            <point key="canvasLocation" x="1280" y="600"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="t08-Yo-U1M">
@@ -652,9 +655,10 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WQb-U4-8gF"/>
         <segue reference="RuR-ee-h81"/>
+        <segue reference="Ipe-eD-MjH"/>
         <segue reference="WlI-MM-Kph"/>
         <segue reference="rlF-Uq-AXZ"/>
+        <segue reference="WQb-U4-8gF"/>
     </inferredMetricsTieBreakers>
 </document>

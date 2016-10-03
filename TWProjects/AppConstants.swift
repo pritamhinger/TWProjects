@@ -15,6 +15,7 @@ struct AppConstants {
         static let CompanyIds = "companyIds"
         static let CompanyNames = "companyNames"
         static let LoggedIn = "LoggedIn"
+        static let LoggedInUserAPIKey = "LoggedInUserAPIKey"
     }
     
     struct CellIdentifier {
@@ -38,6 +39,8 @@ struct AppConstants {
         static let AddProjectSegue = "addProjectSegue"
         static let EditProjectSegue = "editProjectSegue"
         static let DateTimePickerSegue = "dateTimePickerSegue"
+        static let AppSegue = "appSegue"
+        static let AppSegueByPassLogin = "appSegueByPassLogin"
     }
     
     struct StoryboardVCIdentifier {

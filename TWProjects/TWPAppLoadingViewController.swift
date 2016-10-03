@@ -12,11 +12,19 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
 
     var appLoaderView = TWPAppLoaderView(frame: CGRectZero)
     var animationCycleCount = 0
-    static let MAX_ANIMATION_CYCLE = 2
+    static let MAX_ANIMATION_CYCLE = 5
+    var loginProcessCompleted = false
     
     override func viewDidLoad() {
-        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedIn, value: false)
         super.viewDidLoad()
+        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedIn, value: false)
+        if let apiKey = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.LoggedInUserAPIKey) as? String{
+            print("API Key is : \(apiKey)")
+            tryLoginForUser(apiKey)
+        }
+        else{
+            loginProcessCompleted = true
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,7 +61,7 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
                     // Show segue to Dashboard VC
                     print("Show segue to Dashboard VC")
                 }
-                else if self.animationCycleCount == TWPAppLoadingViewController.MAX_ANIMATION_CYCLE{
+                else if self.animationCycleCount == TWPAppLoadingViewController.MAX_ANIMATION_CYCLE || self.loginProcessCompleted{
                     // Show segue to Login VC
                     print("Show segue to Login VC")
                     let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier(AppConstants.StoryboardVCIdentifier.LoginVCStoryboardId) as! TWPLoginViewController
@@ -107,4 +115,54 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
     }
     */
 
+    func tryLoginForUser(apiKey:String) {
+        let authenticationHeader = TWProjectsClient.getAuthorizationString(apiKey, password: "")
+        TWProjectsClient.sharedInstance().getBaseURL(authenticationHeader){ (results, error) in
+            if error == nil{
+                if let userStatus = results![TWProjectsClient.AuthenticateResponseKeys.Status] as? String{
+                    if userStatus == "OK"{
+                        // Response is Ok. Parsing JSON and creating User Instance
+                        let user = User(userDictionary: results![TWProjectsClient.AuthenticateResponseKeys.Account] as! [String:AnyObject]);
+                        
+                        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedInUserAPIKey, value: apiKey)
+                        
+                        // Adding Base URL, after processing, to UserDefault Dictionary.
+                        // We would be using this for every network call
+                        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.BaseURL, value: CommonFunctions.removeProtocolFromURL(user.url!))
+                        
+                        performUIUpdatesOnMainQueue{
+                            // Initiating a new Network Activity indicator View
+                            let methodName = TWProjectsClient.APIMethod.ACCOUNT
+                            TWProjectsClient.sharedInstance().getDataForMethod(methodName, authorizationCookie: authenticationHeader){ (results, error) in
+                                if error == nil{
+                                    if let accountStatus = results![TWProjectsClient.AccountResponseKeys.Status] as? String{
+                                        if accountStatus == "OK"{
+                                            let account = Account(accountDictionary: results![TWProjectsClient.AccountResponseKeys.Account] as! [String:AnyObject])
+                                            print(account.accountHolderId)
+                                        }
+                                    }
+                                    
+                                    performUIUpdatesOnMainQueue{
+                                        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.AuthorizationCookie, value: authenticationHeader)
+                                        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedIn, value: true)
+                                    }
+                                }
+                                else{
+                                    // Showing error in alert view. Calling Common function to show AlertView
+                                    print(error)
+                                }
+                                
+                                self.loginProcessCompleted = true
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                // Showing error in alert view. Calling Common function to show AlertView
+                print(error)
+                self.loginProcessCompleted = true
+            }
+        }
+    }
 }

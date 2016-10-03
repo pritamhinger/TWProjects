@@ -55,6 +55,8 @@ class TWPLoginViewController: UIViewController, UITextFieldDelegate {
                         // Response is Ok. Parsing JSON and creating User Instance
                         let user = User(userDictionary: results![TWProjectsClient.AuthenticateResponseKeys.Account] as! [String:AnyObject]);
                         
+                        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedInUserAPIKey, value: self.apiKeyTextField.text!)
+                        
                         // Adding Base URL, after processing, to UserDefault Dictionary. 
                         // We would be using this for every network call
                         CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.BaseURL, value: CommonFunctions.removeProtocolFromURL(user.url!))
@@ -79,7 +81,7 @@ class TWPLoginViewController: UIViewController, UITextFieldDelegate {
                                     performUIUpdatesOnMainQueue{
                                         // Stopping Authentication Newtork Activity indicator View
                                         hudAuthorization.hideAnimated(true)
-                                        self.performSegueWithIdentifier("AppSegue", sender: nil)
+                                        self.performSegueWithIdentifier(AppConstants.SegueIdentifier.AppSegue, sender: nil)
                                         CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.AuthorizationCookie, value: authenticationHeader)
                                     }
                                 }
