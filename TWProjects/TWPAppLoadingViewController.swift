@@ -60,6 +60,7 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
                 if self.isLoginSuccessful() {
                     // Show segue to Dashboard VC
                     print("Show segue to Dashboard VC")
+                    self.performSegueWithIdentifier(AppConstants.SegueIdentifier.AppSegueByPassLogin, sender: nil)
                 }
                 else if self.animationCycleCount == TWPAppLoadingViewController.MAX_ANIMATION_CYCLE || self.loginProcessCompleted{
                     // Show segue to Login VC
