@@ -14,6 +14,7 @@ struct AppConstants {
         static let AuthorizationCookie = "AuthorizationCookie"
         static let CompanyIds = "companyIds"
         static let CompanyNames = "companyNames"
+        static let LoggedIn = "LoggedIn"
     }
     
     struct CellIdentifier {
@@ -42,6 +43,7 @@ struct AppConstants {
     struct StoryboardVCIdentifier {
         static let DateTimePickerVCId = "DateTimePickerVCId"
         static let ProjectDetailVCId = "projectDetailVCId"
+        static let LoginVCStoryboardId = "loginVCStoryboardId"
     }
     
     struct NotificationName {

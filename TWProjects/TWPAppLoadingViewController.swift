@@ -11,8 +11,11 @@ import UIKit
 class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
 
     var appLoaderView = TWPAppLoaderView(frame: CGRectZero)
+    var animationCycleCount = 0
+    static let MAX_ANIMATION_CYCLE = 2
     
     override func viewDidLoad() {
+        CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedIn, value: false)
         super.viewDidLoad()
     }
     
@@ -46,6 +49,20 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
             label.transform = CGAffineTransformScale(label.transform, 4.0, 4.0)
             label2.transform = CGAffineTransformScale(label2.transform, 4.0, 4.0)
             }, completion: { finished in
+                if self.isLoginSuccessful() {
+                    // Show segue to Dashboard VC
+                    print("Show segue to Dashboard VC")
+                }
+                else if self.animationCycleCount == TWPAppLoadingViewController.MAX_ANIMATION_CYCLE{
+                    // Show segue to Login VC
+                    print("Show segue to Login VC")
+                    let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier(AppConstants.StoryboardVCIdentifier.LoginVCStoryboardId) as! TWPLoginViewController
+                    self.presentViewController(loginVC, animated: true, completion: nil)
+                }
+                else{
+                    self.animationCycleCount += 1
+                    self.repeatAnimation()
+                }
         })
     }
     
@@ -61,6 +78,25 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
         appLoaderView.addCirclePath()
     }
 
+    func repeatAnimation(){
+        view.backgroundColor = Colors.white
+        view.subviews.map({ $0.removeFromSuperview() })
+        appLoaderView = TWPAppLoaderView(frame: CGRectZero)
+        addLoaderView()
+    }
+    
+    func isLoginSuccessful() -> Bool {
+        
+        if let loggedIn = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.LoggedIn) as? Bool{
+            return loggedIn
+        }
+        else{
+            CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedIn, value: false)
+        }
+        
+        return false
+    }
+    
     /*
     // MARK: - Navigation
 
