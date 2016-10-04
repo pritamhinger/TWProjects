@@ -52,6 +52,9 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
                                     companyDAO = CompanyDAO(userDictionary: companyJSON)
                                     if companyDAO != nil{
                                         companiesDAO.append(companyDAO!)
+                                        if (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompanyDAO == nil{
+                                           (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompanyDAO = companyDAO
+                                        }
                                     }
                                 }
                                 
@@ -61,6 +64,7 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
                                     companyNames.append(comp.name!)
                                     if !self.companyIDsStoredInDB.contains(comp.id!){
                                         let company = Company(companyDAO: comp, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
+                                        (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany = company
                                         print("Saving Company \n \(company) ")
                                         self.companyIDsStoredInDB.append(comp.id!)
                                     }

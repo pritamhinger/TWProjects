@@ -96,8 +96,9 @@ extension TWPProjectsViewController{
                                 var projectDAO:ProjectDAO?
                                 // Iterating over response JSON and creating ProjectDAO object which would then be mapped to Project Entity
                                 // Instances to be stored in Persistent store
+                                let companyDAO = (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompanyDAO
                                 for projectJSON in projectsJSON{
-                                    projectDAO = ProjectDAO(userDictionary: projectJSON, companyDAO: nil)
+                                    projectDAO = ProjectDAO(userDictionary: projectJSON, companyDAO: companyDAO)
                                     if projectDAO != nil{
                                         projectsDAO.append(projectDAO!)
                                     }
@@ -106,11 +107,13 @@ extension TWPProjectsViewController{
                                 // Clearing all starred projects as we would be again iterating over projects list we got from Teamwork
                                 // servers. And we have data in latest state.
                                 self.starredProjects.removeAll()
+                                let comp = (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany
                                 for proj in projectsDAO{
                                     if !self.projectIds.contains(proj.id!){
                                         // If project id is not present in ProjectIds collection then this means this is a new project and we
                                         // need to store this project in out persistent store.
                                         let project = Project(projectDAO: proj, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
+                                        project.company = comp
                                         // Checking if this new project is starred or not
                                         if project.starred == 1{
                                             self.starredProjects.append(project)
@@ -134,7 +137,7 @@ extension TWPProjectsViewController{
                                         storedProject?.endDate = proj.endDate
                                         storedProject?.lastChangedOn = proj.lastChangedOn
                                         storedProject?.name = proj.name
-                                        
+                                        storedProject?.company = comp
                                         // Checking if project is starred or not
                                         if storedProject?.starred! == 1{
                                             self.starredProjects.append(storedProject!)

@@ -14,7 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let coreDataStack = CoreDataStack(modelName: CoreDataStack.ModelName.TeamWorkDB)!
-
+    
+    var currentCompanyDAO:CompanyDAO?
+    var currentCompany:Company?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -26,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Some error occured while deleting data")
             }
         }
+
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        print(paths[0])
         return true
     }
 

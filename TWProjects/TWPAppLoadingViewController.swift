@@ -89,7 +89,8 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
 
     func repeatAnimation(){
         view.backgroundColor = Colors.white
-        view.subviews.map({ $0.removeFromSuperview() })
+        let superView = view.subviews.map({ $0.removeFromSuperview() })
+        print(superView)
         appLoaderView = TWPAppLoaderView(frame: CGRectZero)
         addLoaderView()
     }

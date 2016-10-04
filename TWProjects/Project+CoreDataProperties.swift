@@ -37,6 +37,6 @@ extension Project {
     @NSManaged var startPage: String?
     @NSManaged var notifyEveryone: NSNumber?
     @NSManaged var announcementHTML: String?
-    @NSManaged var company: NSManagedObject?
+    @NSManaged var company: Company?
 
 }
