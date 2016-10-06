@@ -24,7 +24,7 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
         super.viewDidAppear(animated)
         
         if CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.LoggedOutCalled
-            ) == nil{
+            ) == nil || CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.LoggedInUserAPIKey) != nil{
             print("Loading loader view")
             addLoaderView()
         }
