@@ -50,6 +50,11 @@ struct CommonFunctions {
         }
     }
     
+    static func deleteValueForKey(key:String){
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.removeObjectForKey(key)
+    }
+    
     static func removeProtocolFromURL(urlString:String) -> String{
         let url = NSURL(string: urlString)
         let scheme = url?.scheme

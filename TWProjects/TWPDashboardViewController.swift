@@ -60,18 +60,32 @@ class TWPDashboardViewController: TWPCoreDataHelperViewController {
                                 
                                 print(companiesDAO)
                                 var companyNames = [String]()
+                                
                                 for comp in companiesDAO{
                                     companyNames.append(comp.name!)
                                     if !self.companyIDsStoredInDB.contains(comp.id!){
                                         let company = Company(companyDAO: comp, insertIntoManagedObjectContext: self.fetchResultsController!.managedObjectContext)
-                                        (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany = company
                                         print("Saving Company \n \(company) ")
                                         self.companyIDsStoredInDB.append(comp.id!)
+                                        (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany = company
                                     }
                                     else{
                                         // TODO: Sync Company Data as passed from Server with the Company data stored in Persistent Store
                                         print("Skipping Save. Will update company data in future releases")
+                                        
+                                        let storedCompany = self.companies.filter{ $0.id! == comp.id! }.first
+                                        
+                                        //Updating old properties values with new properties values
+                                        storedCompany?.address_one = comp.address_one
+                                        storedCompany?.address_two = comp.address_two
+                                        storedCompany?.can_see_private = comp.can_see_private
+                                        storedCompany?.id = comp.id
+                                        storedCompany?.company_name_url = comp.company_name_url
+                                        storedCompany?.name = comp.name
+                                        (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany = storedCompany
                                     }
+                                    
+                                    
                                 }
                                 
                                 CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.CompanyIds, value: self.companyIDsStoredInDB)

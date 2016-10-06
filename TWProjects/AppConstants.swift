@@ -16,6 +16,7 @@ struct AppConstants {
         static let CompanyNames = "companyNames"
         static let LoggedIn = "LoggedIn"
         static let LoggedInUserAPIKey = "LoggedInUserAPIKey"
+        static let LoggedOutCalled = "LoggedOutCalled"
     }
     
     struct CellIdentifier {
@@ -41,6 +42,7 @@ struct AppConstants {
         static let DateTimePickerSegue = "dateTimePickerSegue"
         static let AppSegue = "appSegue"
         static let AppSegueByPassLogin = "appSegueByPassLogin"
+        static let AppSegueLoginVC = "appSegueLoginVC"
     }
     
     struct StoryboardVCIdentifier {
@@ -52,6 +54,7 @@ struct AppConstants {
     struct NotificationName {
         static let DateChosenNotification = "dateChosenNotification"
         static let DataSaveSuccessNotification = "dataSaveSuccessNotification"
+        static let LogoutNotification = "logoutNotification"
     }
     
     struct NotificatioPayloadKeys {

@@ -17,6 +17,31 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareForLogin()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.LoggedOutCalled
+            ) == nil{
+            print("Loading loader view")
+            addLoaderView()
+        }
+        else{
+            print("Logged out has been called")
+            CommonFunctions.deleteValueForKey(AppConstants.UserDefaultKeys.LoggedOutCalled)
+            self.performSegueWithIdentifier(AppConstants.SegueIdentifier.AppSegueLoginVC, sender: nil)
+        }
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TWPAppLoadingViewController.logoutNotification(_:)), name: AppConstants.NotificationName.LogoutNotification, object: nil)
+    }
+    
+    func prepareForLogin() {
         CommonFunctions.addToUserDefault(AppConstants.UserDefaultKeys.LoggedIn, value: false)
         if let apiKey = CommonFunctions.getUserDefaultForKey(AppConstants.UserDefaultKeys.LoggedInUserAPIKey) as? String{
             print("API Key is : \(apiKey)")
@@ -27,9 +52,9 @@ class TWPAppLoadingViewController: UIViewController, AppLoaderViewDelegate {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        addLoaderView()
+    func logoutNotification(notification:NSNotification) {
+        print("Logged Out. Try to show login window")
+        //self.performSegueWithIdentifier(AppConstants.SegueIdentifier.AppSegueLoginVC, sender: nil)
     }
     
     func animateCompanyLabel() {

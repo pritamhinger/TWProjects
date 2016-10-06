@@ -31,6 +31,8 @@ extension TWPProjectsViewController{
                         totalSections = totalSections + 1
                     }
                     
+                    print("Total projects : \(totalProjects)")
+                    
                     var sectionIndex = 0
                     
                     // Iterating over Sections to populate Collection to be used as TableView DataSource

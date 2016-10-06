@@ -6,6 +6,17 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="AvenirNext.ttc">
+            <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--App Loading View Controller-->
         <scene sceneID="0xk-ex-HrC">
@@ -22,6 +33,7 @@
                     </view>
                     <connections>
                         <segue destination="Br8-Cx-FzX" kind="show" identifier="appSegueByPassLogin" id="Ipe-eD-MjH"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="appSegueLoginVC" id="QUD-re-kGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zav-1I-U7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,6 +226,28 @@
                                             <segue destination="IS6-X5-18q" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="wum-SL-AkF"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zfd-HQ-ZgY">
+                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zfd-HQ-ZgY" id="0nt-mh-18M">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LatestActivity" translatesAutoresizingMaskIntoConstraints="NO" id="zoF-Nx-kiY">
+                                                    <rect key="frame" x="23" y="11" width="22" height="22"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kg6-Ie-653">
+                                                    <rect key="frame" x="60" y="11" width="532" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" red="0.41568627450000001" green="0.48627450979999998" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="L5c-oD-O4s" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="WK5-7J-vmQ"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -226,6 +260,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQG-9z-QT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3077" y="233"/>
+        </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="fCe-q9-Qao">
+            <objects>
+                <viewController id="u2w-LP-ZT8" customClass="TWPLogoutViewController" customModule="TWProjects" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Arr-ng-6UW"/>
+                        <viewControllerLayoutGuide type="bottom" id="fEe-Ad-gep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SSP-xh-Ko0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zyw-j3-0yr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rq0-6e-35b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3077" y="1934"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="9St-7u-g26">
@@ -413,7 +466,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWz-Ts-GIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4681" y="1299"/>
+            <point key="canvasLocation" x="5493" y="1299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m1C-ux-JeO">
@@ -429,7 +482,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkC-Nv-ygM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3895" y="1299"/>
+            <point key="canvasLocation" x="4707" y="1299"/>
         </scene>
         <!--Add Project View Controller-->
         <scene sceneID="cLP-57-WZP">
@@ -645,6 +698,24 @@
             </objects>
             <point key="canvasLocation" x="3895" y="516"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LmR-kp-ngB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L5c-oD-O4s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z7O-7R-hdz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="u2w-LP-ZT8" kind="relationship" relationship="rootViewController" id="tyo-sS-uCs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aMh-IQ-9it" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3077" y="1145"/>
+        </scene>
     </scenes>
     <resources>
         <image name="LatestActivity" width="100" height="100"/>
@@ -655,10 +726,10 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RuR-ee-h81"/>
-        <segue reference="Ipe-eD-MjH"/>
-        <segue reference="WlI-MM-Kph"/>
-        <segue reference="rlF-Uq-AXZ"/>
+        <segue reference="BKd-kK-uqS"/>
+        <segue reference="Q3d-6u-Jt7"/>
+        <segue reference="7NJ-Rb-Bdt"/>
+        <segue reference="wum-SL-AkF"/>
         <segue reference="WQb-U4-8gF"/>
     </inferredMetricsTieBreakers>
 </document>
