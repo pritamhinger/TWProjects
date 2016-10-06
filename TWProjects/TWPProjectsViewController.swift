@@ -60,10 +60,12 @@ class TWPProjectsViewController: TWPCoreDataHelperViewController, UITableViewDat
         entityName = CoreDataStack.EntityName.Project
         let coreDataStack = (UIApplication.sharedApplication().delegate as! AppDelegate).coreDataStack
         let fetchRequest = NSFetchRequest(entityName: entityName!)
-        let comp = (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany
-        let predicate = NSPredicate(format: "company = %@", comp!)
+        if let comp = (UIApplication.sharedApplication().delegate as! AppDelegate).currentCompany{
+            let predicate = NSPredicate(format: "company = %@", comp)
+            fetchRequest.predicate = predicate
+        }
+        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key:"lastChangedOn", ascending: false)]
-        fetchRequest.predicate = predicate
         
         fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
         

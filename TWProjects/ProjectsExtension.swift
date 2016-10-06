@@ -139,7 +139,12 @@ extension TWPProjectsViewController{
                                         storedProject?.endDate = proj.endDate
                                         storedProject?.lastChangedOn = proj.lastChangedOn
                                         storedProject?.name = proj.name
-                                        storedProject?.company = comp
+                                        
+                                        // Only need to set company entity to project if the previously stored project doesn't have company entity set which would be rare.
+                                        // Thus we don't want to change the company object of previous projects.
+                                        if storedProject?.company == nil{
+                                            storedProject?.company = comp
+                                        }
                                         // Checking if project is starred or not
                                         if storedProject?.starred! == 1{
                                             self.starredProjects.append(storedProject!)
