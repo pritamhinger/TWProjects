@@ -21,6 +21,7 @@ I have developed this app as a part of my [iOS Nanodegree Course](https://www.ud
 * Persisting Data on device for quickly loading data on Launch of App. Also syncing persistent store with data at backend in background
 * Using animation for better user experience. Used UIPresentationController with animation to present ViewController in bottom half of screen
 * Use of Local Notifications to communicate within app.
+* A pinch of CoreAnimation to encapsulate heavy weight processing during execution of Login control flow.
  
 ## How to use the code
 
